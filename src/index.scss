@@ -1,23 +1,91 @@
-* {
+html,
+body,
+header,
+nav,
+h1,
+a,
+ul,
+li,
+strong,
+main,
+button,
+i,
+section,
+img,
+div,
+h2,
+p,
+form,
+fieldset,
+label,
+input,
+textarea,
+span,
+article,
+footer,
+time,
+small {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
 }
+
+body {
+  background-color: #f1f2f4;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 
 h1 {
   display: block;
   text-align: center;
+
 }
 
+// #nemo{
+//   border: 6px solid black;
+// }
 #canvas {
   border: 3px solid black;
   position: absolute;
   top: 33px;
   left: 50px;
   // background-color: aqua;
-  background-image: url('/src/image/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-image: url('/src/image/background.jpg');
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  background-image: linear-gradient(15deg, #09C6F9, #045de9);
+  background-size: 400%;
+  animation: bg-animation 10s infinite alternate;
   max-width: 100%;
   max-height: 100%;
 }
+
+@keyframes bg-animation{
+  0% {
+    background-position: left;
+  }
+
+  100%{
+    background-position: right;
+  }
+}
+
+

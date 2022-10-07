@@ -1,17 +1,21 @@
 import {Util} from "./util.js"
 
 class Fish {
-  constructor (pos){
+  constructor (pos,name){
     this.pos = pos;
     this.vel = Util.randomVec(5);
     this.radius = 10;
+    this.name = name
     // this.color = options.color;
     // this.game = Game();
   }
   
   draw(ctx) {
+
     const nemo = new Image();
     const nemo2 = new Image();
+    nemo.style.id = 'nemo'
+    nemo2.style.id = 'nemo2'
     nemo.src = 'src/image/l-clownFish.png'
     nemo2.src = 'src/image/r-clownFish.png'
     if (this.vel[0] > 0){
