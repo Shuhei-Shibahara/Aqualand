@@ -1,5 +1,4 @@
 import {Util} from "./util.js"
-import {Game} from "./game.js"
 
 class Fish {
   constructor (pos){
@@ -9,14 +8,18 @@ class Fish {
     // this.color = options.color;
     // this.game = Game();
   }
-
+  
   draw(ctx) {
-    ctx.fillStyle = 'orange';
-    ctx.beginPath();
-    ctx.arc(
-      this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
-    );
-    ctx.fill();
+    const nemo = new Image();
+    nemo.src = 'src/image/clownFish.png'
+    // debugger
+    // ctx.fillStyle = 'orange';
+    // ctx.beginPath();
+    // ctx.arc(
+    //   this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
+    // );
+    // ctx.fill();
+    ctx.drawImage(nemo, this.pos[0], this.pos[1])
 
   };
 
