@@ -21,6 +21,7 @@ class Game{
       let fishY = e.clientY - 40;
       let pos = [fishX,fishY];
       
+      debugger
       if (!this.isOutOfBounds(pos) && this.fish.length < Game.NUM_FISH){
         this.addFish(pos);
       }
