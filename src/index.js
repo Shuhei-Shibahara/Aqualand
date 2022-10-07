@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.height = 500;
   canvas.width = 880;
   
+  // const img = new Image();
+  // img.src = "./image/backround.jpg"
+  // img.onload = function(){
+  //   layout.drawImage(img, 100, 100, 500, 880)
+  // }
   const gameview = new GameView(ctx)
   gameview.start();
 });
