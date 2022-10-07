@@ -1,11 +1,14 @@
 import {Util} from "./util.js"
+import {Game} from "./game.js"
+
 class Fish {
   constructor (pos){
     this.pos = pos;
-    this.vel = [10,10];
+    this.vel = Util.randomVec(6);
     this.radius = 10;
+    this.isWrappable = true;
     // this.color = options.color;
-    // this.game = options.game;
+    // this.game = Game();
   }
 
   draw(ctx) {
@@ -20,13 +23,21 @@ class Fish {
   move() {
     this.pos[0] += this.vel[0]
     this.pos[1] += this.vel[1]
+    if (this.pos[0] - (this.radius/2) < 0 && this.vel[0] < 0 ){
+      this.vel[0] = -this.vel[0];
+    } 
+    if (this.pos[0] + (this.radius / 2) < 880 && this.vel[0] > 0) {
+      this.vel[0] = -this.vel[0];
+    } 
+    if (this.pos[1] - (this.radius / 2) < 0 && this.vel[1] < 0) {
+      this.vel[1] = -this.vel[1];
+    } 
+    if (this.pos[1] + (this.radius / 2) > 500 && this.vel[1] > 0) {
+      this.vel[1] = -this.vel[1];
+    }
   };
   
-
-
 }
-
-
 
 export {Fish}
 

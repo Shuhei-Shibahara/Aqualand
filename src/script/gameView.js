@@ -2,7 +2,7 @@
 import {Game} from './game.js'
 
 class GameView {
-  construction(game,ctx){
+  constructor(ctx){
   this.ctx = ctx;
   this.game = new Game();
   }
@@ -10,8 +10,8 @@ class GameView {
   start () {
     setInterval(() => {
       this.game.moveObjects();
-      this.game.draw(this.drawingContext);
-    }, 20);
+      this.game.draw(this.ctx);
+    }, 50);
   }
 }
 

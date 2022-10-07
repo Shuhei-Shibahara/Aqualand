@@ -1,7 +1,6 @@
 import {Fish} from "./script/fish.js";
 
-import Game from "./script/game.js";
-import GameView from "./script/game_view.js";
+import {GameView} from "./script/gameView.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas')

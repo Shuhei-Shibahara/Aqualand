@@ -8,9 +8,15 @@ class Game{
     this.create();
   }
 
-  static DIM_X = 500;
-  static DIM_Y = 880;
+  static DIM_X = 880;
+  static DIM_Y = 500;
   static NUM_FISH = 10;
+
+  create () {
+    while (this.fish.length < Game.NUM_FISH) {
+      this.addFish();
+    }
+  }
 
   addFish () {
     const fish = new Fish(this.randomPosition())
@@ -28,7 +34,8 @@ class Game{
     this.fish.forEach((el) => {
       el.draw(ctx);
     });
-    ctx.fillRect(0, 0, Game.DIM_X, Game.Dim_Y);
+    // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+
   }
 
   moveObjects (){
@@ -36,6 +43,12 @@ class Game{
       el.move();
     });
   }
+
+  isOutOfBounds(pos) {
+    return (pos[0] < 0) || (pos[1] < 0) ||
+      (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+  };
+
 }
 
 export {Game};
