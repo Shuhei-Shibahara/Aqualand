@@ -3,7 +3,7 @@ const Util = {
     const degX = 2 * Math.PI * Math.random(); 
     const degY = (Math.random() * (0.5- (-0.5)) + 0.5);
     console.log(degY)
-    debugger
+  
   
     return Util.scale([Math.sin(degX), degY], length);
   },

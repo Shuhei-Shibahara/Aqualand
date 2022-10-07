@@ -5,21 +5,32 @@ class Game{
 
   constructor(){
     this.fish = [];
-    this.create();
+    this.canvas =  document.getElementById('canvas');
+    this.createFish = this.createFish.bind(this);
+    this.canvas.addEventListener('click', this.createFish)
+
   }
 
   static DIM_X = 880;
   static DIM_Y = 500;
   static NUM_FISH = 10;
 
-  create () {
-    while (this.fish.length < Game.NUM_FISH) {
-      this.addFish();
+  createFish (e) {
+      console.log('hello')
+      let fishX = e.clientX - 50;
+      let fishY = e.clientY - 40;
+      let pos = [fishX,fishY];
+      
+      if (!this.isOutOfBounds(pos)){
+        this.addFish(pos);
+      }
     }
-  }
+  
 
-  addFish () {
-    const fish = new Fish(this.randomPosition())
+
+
+  addFish (pos) {
+    const fish = new Fish(pos)
     this.fish.push(fish);
   }
 
