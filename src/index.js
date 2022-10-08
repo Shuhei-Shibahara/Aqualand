@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // img.onload = function(){
   //   layout.drawImage(img, 100, 100, 500, 880)
   // }
+  const burger = document.querySelector('.burger')
+  const nav = document.querySelector('.navbar')
+  burger.addEventListener('mouseover', function(){
+    nav.style.display = 'flex';
+  })
+  nav.addEventListener('mouseout', function(){
+    nav.style.display = 'none';
+  })
   const gameview = new GameView(ctx)
   gameview.start();
 });
