@@ -21,7 +21,7 @@ class Game{
   static DIM_Y = 500;
   static NUM_FISH = 10;
   static NUM_DEC = 4;
-  static NUM_BUBBLES = 5;
+  static NUM_BUBBLES = 4;
 
   directingNavbar(e){
     const click = e.target;
@@ -44,8 +44,15 @@ class Game{
 
   createBubble() {
     this.addBubbles();
+
   }
 
+  deleteBubble(){
+    console.log(this.bubbles)
+    if (this.bubbles.length >= Game.NUM_BUBBLES){
+      this.bubbles.shift();
+    }
+  }
 
   addBubbles() {
     const bubble = new Bubble(this.randomPosition())
@@ -95,7 +102,7 @@ class Game{
   }
 
   randomPosition() {
-    let x = Math.floor(Math.random() * (Game.DIM_X + 1));
+    let x = Math.floor(Math.random() * (Game.DIM_X - 50));
     // let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
     let y = Game.DIM_Y;
     return [x, y]

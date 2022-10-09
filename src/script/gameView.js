@@ -8,6 +8,7 @@ class GameView {
   }
 
   start () {
+  
     setInterval(() => {
       this.game.moveObjects();
       this.game.draw(this.ctx);
@@ -15,10 +16,11 @@ class GameView {
     setInterval(()=>{
       this.game.moveBubbles();
       this.game.drawBubbles(this.ctx);
-    }, 100);
+    }, 50);
     setInterval(() => {
       this.game.createBubble();
-    }, 3000);
+      this.game.deleteBubble();
+    }, 8000);
 
   }
 }
