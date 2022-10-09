@@ -24,7 +24,6 @@ class Decoration{
 
     const dec = new Image();
     dec.src = 'src/image/palmtree.png'
-    this.correctPos
     ctx.drawImage(dec, this.posX, this.posY, 100, 250)
   };
 

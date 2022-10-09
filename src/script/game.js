@@ -1,38 +1,55 @@
 //handles functionality of what my clicks would be doing
 import {Fish} from "./fish.js"
 import {Decoration} from "./decoration.js"
+import {Bubble} from "./bubble.js"
 
 class Game{
 
   constructor(){
     this.fish = {};
     this.dec = [];
+    this.bubbles = [];
     this.canvas =  document.getElementById('canvas');
     this.createFish = this.createFish.bind(this);
     this.createDecoration = this.createDecoration.bind(this);
     this.directingNavbar = this.directingNavbar.bind(this);
-
     this.navbar = document.querySelector(".navbar")
     this.navbar.addEventListener('click', this.directingNavbar)
-
   }
 
   static DIM_X = 880;
   static DIM_Y = 500;
   static NUM_FISH = 10;
   static NUM_DEC = 4;
+  static NUM_BUBBLES = 5;
 
   directingNavbar(e){
     const click = e.target;
     console.log(click.classList.value)
-    // console.log(click.classList)
+
     if (click.classList.value === 'fish'){
+      this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.addEventListener('click', this.createFish)
     } 
     if (click.classList.value === 'decorate'){
+      this.canvas.removeEventListener('click', this.createFish)
       this.canvas.addEventListener('click', this.createDecoration)
     }
+    if (click.classList.value === 'imgexit') {
+      this.canvas.removeEventListener('click', this.createFish)
+      this.canvas.removeEventListener('click', this.createDecoration)
+    }
 
+  }
+
+  createBubble() {
+    this.addBubbles();
+  }
+
+
+  addBubbles() {
+    const bubble = new Bubble(this.randomPosition())
+    this.bubbles.push(bubble)
   }
 
   createDecoration(e){
@@ -40,10 +57,9 @@ class Game{
     let decY = e.clientY;
     let pos = [decX,decY];
     console.log(decX)
-    if (!this.isOutOfBounds(pos) && this.dec < Game.NUM_DEC) {
+    if (!this.isOutOfBounds(pos) && this.dec.length < Game.NUM_DEC) {
       this.addDecoration(pos)
     }
-
   }
 
   createFish (e) {
@@ -66,7 +82,7 @@ class Game{
 //     }
 //   })
 // }
-
+ 
   addFish (pos) {
     const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
     
@@ -78,28 +94,38 @@ class Game{
     this.dec.push(dec);
   }
 
-  // randomPosition() {
-  //   let x = Math.floor(Math.random() * (Game.DIM_X + 1));
-  //   let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
-  //   return [x, y]
-  // }
+  randomPosition() {
+    let x = Math.floor(Math.random() * (Game.DIM_X + 1));
+    // let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
+    let y = Game.DIM_Y;
+    return [x, y]
+  }
 
   draw (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    Object.values(this.fish).forEach((el) => {
-      el.draw(ctx);
-    });
     this.dec.forEach(el2=>{
       el2.draw(ctx)
     })
+    Object.values(this.fish).forEach((el) => {
+      el.draw(ctx);
+    });
+  }
+  
+  drawBubbles (ctx){
+    this.bubbles.forEach(el3 =>{
+      el3.draw(ctx)
+    })
+  }
 
+  moveBubbles(){
+    this.bubbles.forEach(el3 => {
+      el3.move();
+    })
   }
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
       el.move();
-      // debugger
-      
     });
   }
 
