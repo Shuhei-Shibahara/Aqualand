@@ -1,22 +1,52 @@
 //handles functionality of what my clicks would be doing
 import {Fish} from "./fish.js"
+import {Decoration} from "./decoration.js"
 
 class Game{
 
   constructor(){
     this.fish = {};
+    this.dec = [];
     this.canvas =  document.getElementById('canvas');
     this.createFish = this.createFish.bind(this);
-    this.canvas.addEventListener('click', this.createFish)
+    this.createDecoration = this.createDecoration.bind(this);
+    this.directingNavbar = this.directingNavbar.bind(this);
+
+    this.navbar = document.querySelector(".navbar")
+    this.navbar.addEventListener('click', this.directingNavbar)
 
   }
 
   static DIM_X = 880;
   static DIM_Y = 500;
   static NUM_FISH = 10;
+  static NUM_DEC = 4;
+
+  directingNavbar(e){
+    const click = e.target;
+    console.log(click.classList.value)
+    // console.log(click.classList)
+    if (click.classList.value === 'fish'){
+      this.canvas.addEventListener('click', this.createFish)
+    } 
+    if (click.classList.value === 'decorate'){
+      this.canvas.addEventListener('click', this.createDecoration)
+    }
+
+  }
+
+  createDecoration(e){
+    let decX = e.clientX;
+    let decY = e.clientY;
+    let pos = [decX,decY];
+    console.log(decX)
+    if (!this.isOutOfBounds(pos) && this.dec < Game.NUM_DEC) {
+      this.addDecoration(pos)
+    }
+
+  }
 
   createFish (e) {
-      Object.values(this.fish).includes(e.target)
       let fishX = e.clientX - 50;
       let fishY = e.clientY - 40;
       let pos = [fishX,fishY];
@@ -41,24 +71,27 @@ class Game{
     const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
     
     this.fish[`fish${Object.values(this.fish).length}`] = fish
-
-    let fishp = document.createElement('p')
-    fishp.id = `fish${Object.values(this.fish).length}`
-
   }
 
-  randomPosition() {
-    let x = Math.floor(Math.random() * (Game.DIM_X + 1));
-    let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
-    return [x, y]
+  addDecoration(pos){
+    const dec = new Decoration(pos);
+    this.dec.push(dec);
   }
+
+  // randomPosition() {
+  //   let x = Math.floor(Math.random() * (Game.DIM_X + 1));
+  //   let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
+  //   return [x, y]
+  // }
 
   draw (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
     Object.values(this.fish).forEach((el) => {
       el.draw(ctx);
     });
-    // ctx.fillRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    this.dec.forEach(el2=>{
+      el2.draw(ctx)
+    })
 
   }
 

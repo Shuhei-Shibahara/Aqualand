@@ -6,6 +6,7 @@ class Fish {
     this.vel = Util.randomVec(5);
     this.radius = 10;
     this.name = name
+    // this.hunger = 3;
     // this.color = options.color;
     // this.game = Game();
   }
