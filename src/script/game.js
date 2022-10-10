@@ -26,8 +26,13 @@ class Game{
   directingNavbar(e){
     const click = e.target;
     console.log(click.classList.value)
-
+    if (click.classList.value === 'feed') {
+      this.canvas.removeEventListener('click', this.createFish)
+      this.canvas.removeEventListener('click', this.createDecoration)
+      this.canvas.addEventListener('click', this.createFish)
+    } 
     if (click.classList.value === 'fish'){
+      this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.addEventListener('click', this.createFish)
     } 
@@ -48,7 +53,6 @@ class Game{
   }
 
   deleteBubble(){
-    console.log(this.bubbles)
     if (this.bubbles.length >= Game.NUM_BUBBLES){
       this.bubbles.shift();
     }
@@ -69,10 +73,17 @@ class Game{
     }
   }
 
+  createFood(e){
+    let foodX = e.clientX;
+    let foodY = e.clientY;
+
+  }
+
   createFish (e) {
       let fishX = e.clientX - 50;
       let fishY = e.clientY - 40;
       let pos = [fishX,fishY];
+      let fishName = `fish${Object.keys(this.fish).length}`
       
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.NUM_FISH){
         this.addFish(pos);
