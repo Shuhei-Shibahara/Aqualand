@@ -39,6 +39,7 @@ class Game{fi
       this.canvas.addEventListener('click', this.createFish)
     } 
     if (click.classList.value === 'decorate'){
+      this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.addEventListener('click', this.createDecoration)
     }
@@ -57,14 +58,17 @@ class Game{fi
     console.log(pos);
     const food = new Food(pos);
     this.food.push(food);
-    this.fish.forEach(el =>{
-      el.chase();
+    Object.values(this.fish).forEach(el =>{
+      el.chase(pos);
     })
   }
 
   decreaseFoodLife(){
     this.food.forEach(el =>{
       el.life--
+      if (el.life === 0){
+        this.food.shift();
+      }
     })
   }
 
@@ -166,7 +170,13 @@ class Game{fi
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
-      el.move();
+      if (this.food.length > 0){
+        this.food.forEach(food =>{
+          el.chase(food.pos);
+        })
+      } else{
+        el.move();
+      }
     });
   }
 
