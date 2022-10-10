@@ -3,6 +3,7 @@ import {Fish} from "./fish.js"
 import {Decoration} from "./decoration.js"
 import {Bubble} from "./bubble.js"
 import {Food} from "./food.js"
+import {Util} from "./util.js"
 
 class Game{fi
   constructor(){
@@ -24,6 +25,7 @@ class Game{fi
   static MAX_FISH = 10;
   static MAX_DEC = 4;
   static NUM_BUBBLES = 4;
+  static MAX_FOOD = 1;
 
   directingNavbar(e){
     const click = e.target;
@@ -56,10 +58,12 @@ class Game{fi
     let foodY = e.clientY - 20;
     let pos = [foodX, foodY];
     const food = new Food(pos);
-    this.food.push(food);
-    Object.values(this.fish).forEach(el =>{
-      el.chase(pos);
-    })
+    if (this.food.length < Game.MAX_FOOD){
+      this.food.push(food);
+      Object.values(this.fish).forEach(el =>{
+        el.chase(pos);
+      })
+    }
   }
 
   decreaseFoodLife(){
@@ -170,23 +174,32 @@ class Game{fi
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
+
       if (this.food.length > 0){
+        
         this.food.forEach(food =>{
-          el.chase(food.pos);
-          console.log(food.pos[0]);
-          console.log(el.posX)
-          if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
-            // el.size += 1;
-            // el.hunger = false;
-            this.food.shift();
+          if (el.hunger){
+            el.chase(food.pos);
+            if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
+              el.size += 1;
+              el.hunger = false;
+              el.vel = Util.randomVec(5);
+              el.velX = el.vel[0]
+              this.food.shift();
+            }
+          } 
+          else {
+            el.move();
           }
         })
-      } else{
+        }
+      else {
         el.move();
-        
       }
-    });
-  }
+      })
+    };
+ 
+  
 
   isOutOfBounds(pos) {
     return (pos[0] < 0) || (pos[1] < 0) ||
