@@ -55,7 +55,6 @@ class Game{fi
     let foodX = e.clientX - 20;
     let foodY = e.clientY - 20;
     let pos = [foodX, foodY];
-    console.log(pos);
     const food = new Food(pos);
     this.food.push(food);
     Object.values(this.fish).forEach(el =>{
@@ -141,6 +140,7 @@ class Game{fi
     let y = Game.DIM_Y;
     return [x, y]
   }
+  
 
   draw (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
@@ -173,9 +173,17 @@ class Game{fi
       if (this.food.length > 0){
         this.food.forEach(food =>{
           el.chase(food.pos);
+          console.log(food.pos[0]);
+          console.log(el.posX)
+          if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
+            // el.size += 1;
+            // el.hunger = false;
+            this.food.shift();
+          }
         })
       } else{
         el.move();
+        
       }
     });
   }
