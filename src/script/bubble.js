@@ -40,9 +40,6 @@ class Bubble {
     this.posY -= 1.5
   }
 
-  switch(){
-
-  }
 }
 
 export {Bubble};

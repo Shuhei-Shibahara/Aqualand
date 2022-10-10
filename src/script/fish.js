@@ -6,7 +6,7 @@ class Fish {
     this.vel = Util.randomVec(5);
     this.radius = 10;
     this.name = name
-    // this.hunger = 3;
+    this.hunger = true;
     // this.color = options.color;
     // this.game = Game();
   }
@@ -26,6 +26,12 @@ class Fish {
       ctx.drawImage(nemo, this.pos[0], this.pos[1], 20, 30)
     }
   };
+
+  chase(){
+    if (this.hunger){
+      
+    } 
+  }
 
  
 

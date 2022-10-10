@@ -21,7 +21,9 @@ class GameView {
       this.game.createBubble();
       this.game.deleteBubble();
     }, 8000);
-
+    setInterval(()=>{
+      this.game.decreaseFoodLife()
+    }, 800);
   }
 }
 

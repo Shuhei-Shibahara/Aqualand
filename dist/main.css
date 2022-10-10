@@ -84,6 +84,7 @@ h1 {
   flex-flow: column wrap;
   justify-content: space-evenly;
   margin-left: 53px;
+  margin-top: 0.5px;
   background-color: grey;
   max-width: 100%;
   max-height: 100%;

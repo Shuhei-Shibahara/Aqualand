@@ -2,15 +2,17 @@
 import {Fish} from "./fish.js"
 import {Decoration} from "./decoration.js"
 import {Bubble} from "./bubble.js"
+import {Food} from "./food.js"
 
-class Game{
-
+class Game{fi
   constructor(){
     this.fish = {};
     this.dec = [];
     this.bubbles = [];
+    this.food = [];
     this.canvas =  document.getElementById('canvas');
     this.createFish = this.createFish.bind(this);
+    this.createFood = this.createFood.bind(this);
     this.createDecoration = this.createDecoration.bind(this);
     this.directingNavbar = this.directingNavbar.bind(this);
     this.navbar = document.querySelector(".navbar")
@@ -19,8 +21,8 @@ class Game{
 
   static DIM_X = 880;
   static DIM_Y = 500;
-  static NUM_FISH = 10;
-  static NUM_DEC = 4;
+  static MAX_FISH = 10;
+  static MAX_DEC = 4;
   static NUM_BUBBLES = 4;
 
   directingNavbar(e){
@@ -29,10 +31,10 @@ class Game{
     if (click.classList.value === 'feed') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
-      this.canvas.addEventListener('click', this.createFish)
+      this.canvas.addEventListener('click', this.createFood)
     } 
     if (click.classList.value === 'fish'){
-      this.canvas.removeEventListener('click', this.createFish)
+      this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.addEventListener('click', this.createFish)
     } 
@@ -47,10 +49,32 @@ class Game{
 
   }
 
+  
+  createFood(e){
+    let foodX = e.clientX - 20;
+    let foodY = e.clientY - 20;
+    let pos = [foodX, foodY];
+    console.log(pos);
+    const food = new Food(pos);
+    this.food.push(food);
+    this.fish.forEach(el =>{
+      el.chase();
+    })
+  }
+
+  decreaseFoodLife(){
+    this.food.forEach(el =>{
+      el.life--
+    })
+  }
+
+
+  
   createBubble() {
     this.addBubbles();
-
   }
+
+ 
 
   deleteBubble(){
     if (this.bubbles.length >= Game.NUM_BUBBLES){
@@ -68,16 +92,11 @@ class Game{
     let decY = e.clientY;
     let pos = [decX,decY];
     console.log(decX)
-    if (!this.isOutOfBounds(pos) && this.dec.length < Game.NUM_DEC) {
+    if (!this.isOutOfBounds(pos) && this.dec.length < Game.MAX_DEC) {
       this.addDecoration(pos)
     }
   }
 
-  createFood(e){
-    let foodX = e.clientX;
-    let foodY = e.clientY;
-
-  }
 
   createFish (e) {
       let fishX = e.clientX - 50;
@@ -85,7 +104,7 @@ class Game{
       let pos = [fishX,fishY];
       let fishName = `fish${Object.keys(this.fish).length}`
       
-      if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.NUM_FISH){
+      if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
         this.addFish(pos);
       }
     }
@@ -124,9 +143,13 @@ class Game{
     this.dec.forEach(el2=>{
       el2.draw(ctx)
     })
+    this.food.forEach(el3 =>{
+      el3.draw(ctx);
+    })
     Object.values(this.fish).forEach((el) => {
       el.draw(ctx);
     });
+
   }
   
   drawBubbles (ctx){
