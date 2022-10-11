@@ -12,6 +12,7 @@ class Game{
     this.bubbles = [];
     this.food = [];
     this.canvas =  document.getElementById('canvas');
+    this.body = document.querySelector('body');
     this.createFish = this.createFish.bind(this);
     this.createFood = this.createFood.bind(this);
     this.createDecoration = this.createDecoration.bind(this);
@@ -38,12 +39,13 @@ class Game{
     if (click.classList.value === 'fish'){
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createDecoration)
-      this.canvas.addEventListener('mousemove', this.hoverFish)
+      this.body.style.cursor = "url('../src/image/c-clownFish.png'), auto"
       this.canvas.addEventListener('click', this.createFish)
     } 
     if (click.classList.value === 'decorate'){
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createFish)
+      this.body.style.cursor = 'pointer'
       this.canvas.addEventListener('click', this.createDecoration)
     }
     if (click.classList.value === 'imgexit') {
@@ -108,7 +110,12 @@ class Game{
       let fishY = e.clientY - 40;
       let pos = [fishX,fishY];
       let fishName = `fish${Object.keys(this.fish).length}`
-      
+
+      // const mouse = document.getElementsByTagName("html");
+      // mouse.style.cursor = "url('../image/l-betta.png'), auto";    
+      // this.body.style.cursor = "url('../src/image/l-betta.png'), auto"
+
+  
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
         this.addFish(pos);
       }
@@ -172,17 +179,17 @@ class Game{
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
-      console.log(el.hunger, 'hunger')
       
       if (this.food.length > 0 && el.hunger){
 
         this.food.forEach(food =>{
           if (el.hunger){
+            console.log(el.hunger)
             el.chase(food.pos);
-            // console.log(el.hunger)
             if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
               el.size += 1;
               el.hunger = false;
+              el.resetHunger();
               el.vel = Util.randomVec(5);
               el.velX = el.vel[0]
               this.food.shift();
@@ -192,8 +199,9 @@ class Game{
             el.move();
           }
         })
-        }
+      }
       else {
+        // console.log(el.hunger)
         el.move();
       }
       })

@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const titleScreen = document.querySelector('.titleScreen')
   burger.addEventListener('mouseover', function () {
     nav.style.display = 'flex';
-   
   })
 
+
   start.addEventListener('click', function(){
-    console.log('hi')
     titleScreen.style.display = 'none'
+
   })
   // nav.addEventListener('mouseout', function(){
   //   nav.style.display = 'none'

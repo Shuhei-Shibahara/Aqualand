@@ -11,18 +11,18 @@ class Fish {
     this.name = name
     this.hunger = true;
     this.size = 1;
-    // this.resetHunger();
+    // if (!this.hunger) this.resetHunger();
     // this.color = options.color;
     // this.game = Game();
   }
   
-  // resetHunger(){
-  //   if (!this.hunger){
-  //     setInterval(() => {
-  //       this.hunger = true;
-  //     }, 10000);
-  //   }
-  // }
+  resetHunger(){
+    console.log('test')
+      setInterval(() => {
+        this.hunger = true;
+        console.log('hi')
+      }, 4000)
+  }
 
   draw(ctx) {
 
