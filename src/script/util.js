@@ -2,7 +2,6 @@ const Util = {
   randomVec(length) {
     const degX = 2 * Math.PI * Math.random(); 
     const degY = (Math.random() * (.6) - .3);
-    console.log(degY)
   
   
     return Util.scale([Math.sin(degX)/2, degY], length);

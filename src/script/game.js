@@ -30,7 +30,6 @@ class Game{
 
   directingNavbar(e){
     const click = e.target;
-    console.log(click.classList.value)
     if (click.classList.value === 'feed') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
@@ -121,16 +120,6 @@ class Game{
       }
     }
   
-
-// checkFish(pos){
-//   this.fish.forEach(el => {
-//     if (el.pos === pos){
-//       console.log('fish exist')
-//     }else{
-//     console.log('doesnt exist')
-//     }
-//   })
-// }
  
   addFish (pos) {
     const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
@@ -201,7 +190,6 @@ class Game{
         })
       }
       else {
-        // console.log(el.hunger)
         el.move();
       }
       })

@@ -17,10 +17,8 @@ class Fish {
   }
   
   resetHunger(){
-    console.log('test')
       setInterval(() => {
         this.hunger = true;
-        console.log('hi')
       }, 4000)
   }
 
