@@ -10,9 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const burger = document.querySelector('.burger')
   const exit = document.querySelector('.exit')
   const nav = document.querySelector('.navbar')
+  const start = document.querySelector('.start')
+  const titleScreen = document.querySelector('.titleScreen')
   burger.addEventListener('mouseover', function () {
     nav.style.display = 'flex';
    
+  })
+
+  start.addEventListener('click', function(){
+    console.log('hi')
+    titleScreen.style.display = 'none'
   })
   // nav.addEventListener('mouseout', function(){
   //   nav.style.display = 'none'

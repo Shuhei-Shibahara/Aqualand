@@ -49,12 +49,13 @@ body {
   background-size: cover;
 }
 
-div.TitleScreen {
+div.titleScreen {
   display: flex;
   position: absolute;
   justify-content: center;
   background-image: url("../src/image/lobbyBackground.jpg");
   padding-left: 5px;
+  padding-top: 30px;
   height: 514px;
   width: 881px;
   z-index: 3;
@@ -64,6 +65,20 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+section h1 {
+  border-top: 3px yellow solid;
+  font-family: "AQUARIUM", sans-serif;
+  font-size: 50px;
+}
+
+section h2 {
+  border-top: 3px yellow solid;
+  border-bottom: 3px yellow solid;
+  padding: 2px;
+  font-family: "AQUARIUM", sans-serif;
+  font-size: 30px;
 }
 
 ul {
@@ -104,8 +119,8 @@ h1 {
   width: 40px;
   flex-flow: column wrap;
   justify-content: space-evenly;
-  margin-left: 103px;
-  margin-top: 0.5px;
+  margin-left: 3px;
+  margin-top: 36px;
   background-color: grey;
   max-width: 100%;
   max-height: 100%;
@@ -116,7 +131,7 @@ h1 {
   position: absolute;
   display: flex;
   padding: 10px;
-  margin-left: 0px;
+  margin-top: 36px;
   width: 20px;
   height: 20px;
   z-index: 1;
