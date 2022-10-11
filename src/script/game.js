@@ -5,7 +5,7 @@ import {Bubble} from "./bubble.js"
 import {Food} from "./food.js"
 import {Util} from "./util.js"
 
-class Game{fi
+class Game{
   constructor(){
     this.fish = {};
     this.dec = [];
@@ -38,6 +38,7 @@ class Game{fi
     if (click.classList.value === 'fish'){
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createDecoration)
+      this.canvas.addEventListener('mousemove', this.hoverFish)
       this.canvas.addEventListener('click', this.createFish)
     } 
     if (click.classList.value === 'decorate'){
@@ -60,9 +61,6 @@ class Game{fi
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){
       this.food.push(food);
-      Object.values(this.fish).forEach(el =>{
-        el.chase(pos);
-      })
     }
   }
 
@@ -174,13 +172,14 @@ class Game{fi
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
-
+      console.log(el.hunger, 'hunger')
+      
       if (this.food.length > 0 && el.hunger){
 
         this.food.forEach(food =>{
           if (el.hunger){
             el.chase(food.pos);
-            console.log(el.hunger)
+            // console.log(el.hunger)
             if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
               el.size += 1;
               el.hunger = false;
@@ -198,6 +197,12 @@ class Game{fi
         el.move();
       }
       })
+
+      // hoverFish(e){
+      // let hoverX = e.clientX;
+      // let hoverY = e.clientY;
+      // let pos = [decX, decY];
+      // }
     };
  
   

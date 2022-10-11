@@ -1,5 +1,4 @@
 
-import { set } from 'core-js/core/dict';
 import {Game} from './game.js'
 
 class GameView {
@@ -9,7 +8,6 @@ class GameView {
   }
 
   start () {
-  
     setInterval(() => {
       this.game.moveObjects();
       this.game.draw(this.ctx);
