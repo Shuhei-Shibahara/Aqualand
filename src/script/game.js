@@ -175,11 +175,12 @@ class Game{fi
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
 
-      if (this.food.length > 0){
-        
+      if (this.food.length > 0 && el.hunger){
+
         this.food.forEach(food =>{
           if (el.hunger){
             el.chase(food.pos);
+            console.log(el.hunger)
             if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
               el.size += 1;
               el.hunger = false;
