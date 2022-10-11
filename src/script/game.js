@@ -56,9 +56,10 @@ class Game{
 
   
   createFood(e){
-    let foodX = e.clientX - 20;
-    let foodY = e.clientY - 20;
+    let foodX = e.clientX ;
+    let foodY = e.clientY - 80;
     let pos = [foodX, foodY];
+    console.log(e.clientX)
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){
       this.food.push(food);
@@ -97,7 +98,6 @@ class Game{
     let decX = e.clientX;
     let decY = e.clientY;
     let pos = [decX,decY];
-    console.log(decX)
     if (!this.isOutOfBounds(pos) && this.dec.length < Game.MAX_DEC) {
       this.addDecoration(pos)
     }
@@ -173,7 +173,6 @@ class Game{
 
         this.food.forEach(food =>{
           if (el.hunger){
-            console.log(el.hunger)
             el.chase(food.pos);
             if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
               el.size += 1;
