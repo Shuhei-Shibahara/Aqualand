@@ -1,4 +1,5 @@
 
+import { set } from 'core-js/core/dict';
 import {Game} from './game.js'
 
 class GameView {

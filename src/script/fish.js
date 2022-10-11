@@ -11,10 +11,19 @@ class Fish {
     this.name = name
     this.hunger = true;
     this.size = 1;
+    // this.resetHunger();
     // this.color = options.color;
     // this.game = Game();
   }
   
+  // resetHunger(){
+  //   if (!this.hunger){
+  //     setInterval(() => {
+  //       this.hunger = true;
+  //     }, 10000);
+  //   }
+  // }
+
   draw(ctx) {
 
     const nemo = new Image();
