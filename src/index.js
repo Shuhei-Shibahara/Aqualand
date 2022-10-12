@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     burger.style.display = 'none';
   })
 
-  // canvas.addEventListener('contextmenu', (ev) => {
-  //   ev.preventDefault();
-  //   nav.style.display = 'none'  
-  // });
   window.addEventListener('keypress', (e) => {
     if(e.key === 'e'){
       nav.style.display = 'none'
@@ -34,9 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.style.display ='flex'
 
   })
-  // nav.addEventListener('mouseout', function(){
-  //   nav.style.display = 'none'
-  // })
+
   exit.addEventListener('click', function () {
     nav.style.display = 'none';
     burger.style.display = 'flex';

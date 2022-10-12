@@ -98,9 +98,8 @@ div.titleScreen{
   display: flex;
   position: absolute;
   justify-content: center;
-  // background-color: white;
+  border-radius: 5%;  
   background-image: url("../src/image/lobbyBackground.jpg");
-  // padding-left: 5px;
   padding-top: 30px;
   height: 700px;
   width: 1200px;
