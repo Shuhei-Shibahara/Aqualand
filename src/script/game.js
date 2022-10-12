@@ -13,6 +13,12 @@ class Game{
     this.food = [];
     this.canvas =  document.getElementById('canvas');
     this.body = document.querySelector('body');
+    this.grid = document.querySelector('.grid-container')
+    this.item1 = document.querySelector('.grid-item1')
+    this.item2 = document.querySelector('.grid-item2')
+    this.item3 = document.querySelector('.grid-item3')
+    this.item4 = document.querySelector('.grid-item4')
+    this.navbar = document.querySelector('.navbar')
     this.destroy = this.destroy.bind(this);
     this.createFish = this.createFish.bind(this);
     this.createFood = this.createFood.bind(this);
@@ -50,8 +56,11 @@ class Game{
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.destroy)
+      this.grid.style.display = 'flex';
       this.body.style.cursor = "url('../src/image/c-decoration.png'), auto"
-      this.canvas.addEventListener('click', this.createDecoration)
+      document.addEventListener('click', this.createDecoration)
+    }else{
+      this.grid.style.display = 'none';
     }
     if (click.classList.value === 'delete') {
       this.canvas.removeEventListener('click', this.createFood)
@@ -73,26 +82,22 @@ class Game{
   }
 
   destroy(e){
-    console.log(e.currentTarget)
     let targetX = e.clientX - 200;
     let targetY = e.clientY;
+    console.log(targetX, targetY)
     let pos = [targetX, targetY]
-    // console.log(pos)
-    console.log(this.fish);
     Object.values(this.fish).forEach((el) => {
       if (el.status === 'dead')
-        if (targetX < el.posX + 100 && targetX > el.posX - 100 && targetY < el.posY + 100 && targetY > el.posY - 100){
+        if (targetX < el.posX + 200 && targetX > el.posX - 100 && targetY < el.posY + 100 && targetY > el.posY){
         delete this.fish[el.name]; 
-        console.log(this.fish);
-        // console.log(el.name)
       }
     })
   }
 
   
   createFood(e){
-    let foodX = e.clientX - 200;
-    let foodY = e.clientY - 20;
+    let foodX = e.clientX - 300;
+    let foodY = e.clientY - 40;
     let pos = [foodX, foodY];
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){
@@ -129,44 +134,33 @@ class Game{
   }
 
   createDecoration(e){
-    let decX = e.clientX;
-    let decY = e.clientY;
-    let pos = [decX,decY];
-    let zone = 0;
-    if (decX < 450) {
-      decX = 80;
+    if (this.navbar.style.display === 'flex'){
+      this.grid.style.marginLeft = '118px'
+    }
+    let zone;
+    if (e.target === this.item1){
       zone = 1;
     }
-    if (decX >= 450 && decX < 750) {
-      decX = 450;
+    if (e.target === this.item2) {
       zone = 2;
-    }
-
-    if (decX >= 750 && decX < 1100) {
-      decX = 750;
+    } 
+    if (e.target === this.item3) {
       zone = 3;
-    }
-
-    if (decX >= 1150) {
-      decX = 1150;
+    } 
+    if (e.target === this.item4) {
       zone = 4;
     }
-
-    if (!this.isOutOfBounds(pos) && this.dec.length < Game.MAX_DEC) {
-      this.addDecoration(pos, zone)
+    if (this.dec.length < Game.MAX_DEC) {
+      this.addDecoration(zone)
     }
   }
 
 
   createFish (e) {
-      let fishX = e.clientX - 220;
-      let fishY = e.clientY - 100;
+      let fishX = e.clientX - 300;
+      let fishY = e.clientY - 30;
       let pos = [fishX,fishY];
       let fishName = `fish${Object.keys(this.fish).length}`
-
-      // const mouse = document.getElementsByTagName("html");
-      // mouse.style.cursor = "url('../image/l-betta.png'), auto";    
-      // this.body.style.cursor = "url('../src/image/l-betta.png'), auto"
 
   
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
@@ -181,19 +175,20 @@ class Game{
     this.fish[`fish${Object.values(this.fish).length}`] = fish
   }
 
-  addDecoration(pos, zone){
-    const dec = new Decoration(pos, zone);
-    const empty = true;
-    this.dec.forEach(checker => {
-      if (checker.zone === dec.zone){
-        empty = false;
+  addDecoration(zone){
+    if (zone){
+        const dec = new Decoration(zone);
+        const empty = true;
+        this.dec.forEach(checker => {
+          if (checker.zone === dec.zone){
+            empty = false;
+          }
+        })
+        if (empty){
+          this.dec.push(dec);
+        }
       }
-    })
-    if (empty){
-      this.dec.push(dec);
     }
-    console.log(this.dec)
-  }
 
   randomPosition() {
     let x = Math.floor(Math.random() * (Game.DIM_X));
@@ -236,7 +231,7 @@ class Game{
           this.food.forEach(food =>{
             if (el.hunger){
               el.chase(food.pos);
-              if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
+              if (el.posX >= (food.pos[0] - 30) && el.posX <= (food.pos[0] + 30) && el.posY >= (food.pos[1] - 30) && el.posY <= (food.pos[1] + 30)){
                 if (el.size < 3){
                   el.size += 1;
                 }
@@ -261,12 +256,6 @@ class Game{
         el.move();
       }
     })
-
-      // hoverFish(e){
-      // let hoverX = e.clientX;
-      // let hoverY = e.clientY;
-      // let pos = [decX, decY];
-      // }
     };
  
   

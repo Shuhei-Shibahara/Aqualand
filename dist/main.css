@@ -60,7 +60,7 @@ body {
 }
 
 .grid-container {
-  display: flex;
+  display: none;
   position: absolute;
   z-index: 4;
 }
@@ -68,6 +68,35 @@ body {
 .grid-container div {
   border: black 1px solid;
   background-color: white;
+  opacity: 0.4;
+  width: 348px;
+  height: 900px;
+}
+
+.grid-item1 {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.grid-item4 {
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.grid-item1:hover {
+  background-color: grey;
+}
+
+.grid-item2:hover {
+  background-color: grey;
+}
+
+.grid-item3:hover {
+  background-color: grey;
+}
+
+.grid-item4:hover {
+  background-color: grey;
 }
 
 div.titleScreen {

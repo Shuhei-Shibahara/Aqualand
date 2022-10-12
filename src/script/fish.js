@@ -27,8 +27,6 @@ class Fish {
   healthClock(){
     if (this.hunger === true){
       setInterval(() => {
-        console.log(this.hunger)
-        console.log(this.health)
         this.health--;
       }, 1000)
     }
@@ -47,19 +45,19 @@ class Fish {
 
   if (this.health > 0){
     if (this.velX > 0 && this.size === 1){
-      ctx.drawImage(nemo2, this.posX, this.posY, 40, 60)
+      ctx.drawImage(nemo2, this.posX, this.posY, 60, 40)
     }
     if (this.velX < 0 && this.size === 1){
-      ctx.drawImage(nemo, this.posX, this.posY, 40, 60)
+      ctx.drawImage(nemo, this.posX, this.posY, 60, 40)
     }
     if (this.velX > 0 && this.size === 2) {
-      ctx.drawImage(nemo2, this.posX, this.posY, 60, 80)
+      ctx.drawImage(nemo2, this.posX, this.posY, 80, 60)
     }
     if (this.velX < 0 && this.size === 2) {
-      ctx.drawImage(nemo, this.posX, this.posY, 60, 80)
+      ctx.drawImage(nemo, this.posX, this.posY, 80, 60)
     }
     if (this.velX > 0 && this.size === 3) {
-      ctx.drawImage(nemo2, this.posX, this.posY, 100, 120)
+      ctx.drawImage(nemo2, this.posX, this.posY, 120, 100)
     }
     if (this.velX < 0 && this.size === 3) {
       ctx.drawImage(nemo, this.posX, this.posY, 100, 120)
@@ -91,7 +89,6 @@ class Fish {
 
 
   move() {
-    // console.log(this.posX)
     if (this.health > 0){
       this.posX += this.velX;
       this.posY += this.vel[1];
@@ -142,7 +139,6 @@ class Fish {
         this.posY ++;
       }else{
         this.posY --;
-        console.log(this.posY)
       }
     }
   
