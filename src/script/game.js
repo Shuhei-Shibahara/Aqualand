@@ -13,6 +13,7 @@ class Game{
     this.food = [];
     this.canvas =  document.getElementById('canvas');
     this.body = document.querySelector('body');
+    this.destroy = this.destroy.bind(this);
     this.createFish = this.createFish.bind(this);
     this.createFood = this.createFood.bind(this);
     this.createDecoration = this.createDecoration.bind(this);
@@ -33,12 +34,14 @@ class Game{
     if (click.classList.value === 'feed') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
-      this.canvas.addEventListener('click', this.createFood)
+      // this.canvas.addEventListener('click', this.createFood)
+      this.canvas.addEventListener('click', this.destroy)
       this.body.style.cursor = 'pointer'
 
     } 
     if (click.classList.value === 'fish'){
-      this.canvas.removeEventListener('click', this.createFood)
+      // this.canvas.removeEventListener('click', this.createFood)
+      this.canvas.removeEventListener('click', this.destroy)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.body.style.cursor = "url('../src/image/c-clownFish.png'), auto"
       this.canvas.addEventListener('click', this.createFish)
@@ -58,9 +61,25 @@ class Game{
 
   }
 
+  destroy(e){
+    console.log(e.currentTarget)
+    let targetX = e.clientX - 200;
+    let targetY = e.clientY;
+    let pos = [targetX, targetY]
+    // console.log(pos)
+    console.log(this.fish);
+    Object.values(this.fish).forEach((el) => {
+      if (el.status === 'dead')
+        if (targetX < el.posX + 100 && targetX > el.posX - 100 && targetY < el.posY + 100 && targetY > el.posY - 100){
+        delete this.fish[el.name]; 
+        console.log(this.fish);
+        // console.log(el.name)
+      }
+    })
+  }
+
   
   createFood(e){
-    console.log(e.clientX)
     let foodX = e.clientX - 290;
     let foodY = e.clientY - 90;
     let pos = [foodX, foodY];
@@ -201,32 +220,35 @@ class Game{
 
   moveObjects (){
     Object.values(this.fish).forEach((el) => {
-      
-      if (this.food.length > 0 && el.hunger){
-
-        this.food.forEach(food =>{
-          if (el.hunger){
-            el.chase(food.pos);
-            if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
-              if (el.size < 3){
-                el.size += 1;
+      if (el.health > 0){
+        if (this.food.length > 0 && el.hunger){
+          this.food.forEach(food =>{
+            if (el.hunger){
+              el.chase(food.pos);
+              if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
+                if (el.size < 3){
+                  el.size += 1;
+                }
+                el.hunger = false;
+                el.health = 60;
+                el.vel = Util.randomVec(5);
+                el.velX = el.vel[0]
+                this.food.shift();
               }
-              el.hunger = false;
-              el.resetHunger();
-              el.vel = Util.randomVec(5);
-              el.velX = el.vel[0]
-              this.food.shift();
+            } 
+            else {
+              el.move();
             }
-          } 
-          else {
-            el.move();
-          }
-        })
+          })
+        }
+        else {
+          el.move();
+        }
       }
-      else {
+      else{
         el.move();
       }
-      })
+    })
 
       // hoverFish(e){
       // let hoverX = e.clientX;

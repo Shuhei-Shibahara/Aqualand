@@ -10,27 +10,41 @@ class Fish {
     this.radius = 10;
     this.name = name
     this.hunger = true;
+    this.health = 10;
     this.size = 1;
-    // if (!this.hunger) this.resetHunger();
-    // this.color = options.color;
-    // this.game = Game();
+    this.status = 'alive'
+    this.resetHunger();
+    this.healthClock();
   }
   
   resetHunger(){
+    if (!this.hunger){
       setInterval(() => {
-        this.hunger = true;
       }, 30000)
+        this.hunger = true;
+    }
   }
+
+  healthClock(){
+    if (this.hunger === true){
+      setInterval(() => {
+        this.health--;
+      }, 1000)
+    }
+  }
+  
 
   draw(ctx) {
 
     const nemo = new Image();
     const nemo2 = new Image();
-    nemo.style.id = 'nemo'
-    nemo2.style.id = 'nemo2'
     nemo.src = 'src/image/l-clownFish.png'
     nemo2.src = 'src/image/r-clownFish.png'
 
+    const deadFish = new Image();
+    deadFish.src = 'src/image/deadFish.png'
+
+  if (this.health > 0){
     if (this.velX > 0 && this.size === 1){
       ctx.drawImage(nemo2, this.posX, this.posY, 40, 60)
     }
@@ -49,6 +63,13 @@ class Fish {
     if (this.velX < 0 && this.size === 3) {
       ctx.drawImage(nemo, this.posX, this.posY, 100, 120)
     }
+  }
+  if (this.health <= 0) {
+    this.status = 'dead'
+    ctx.drawImage(deadFish, this.posX, this.posY, 80, 40)
+  }
+    
+ 
   };
 
   chase(pos){
@@ -69,51 +90,61 @@ class Fish {
 
 
   move() {
-    
-    this.posX += this.velX;
-    this.posY += this.vel[1];
-    if (this.size === 1){
-      if (this.posX - 5 < 0 && this.velX < 0 ){
-        this.velX = (-this.velX);
-      } 
-      if (this.posX + 40 > 1400 && this.velX > 0) {
-        this.velX = (-this.velX);
-      } 
-      if (this.posY < 0 && this.vel[1] < 0) {
-        this.vel[1] = (-this.vel[1]);
-      } 
-      if (this.posY + 70 > 900 && this.vel[1] > 0) {
-        this.vel[1] = (-this.vel[1]);
+    // console.log(this.posX)
+    if (this.health > 0){
+      this.posX += this.velX;
+      this.posY += this.vel[1];
+      if (this.size === 1){
+        if (this.posX - 5 < 0 && this.velX < 0 ){
+          this.velX = (-this.velX);
+        } 
+        if (this.posX + 40 > 1400 && this.velX > 0) {
+          this.velX = (-this.velX);
+        } 
+        if (this.posY < 0 && this.vel[1] < 0) {
+          this.vel[1] = (-this.vel[1]);
+        } 
+        if (this.posY + 70 > 900 && this.vel[1] > 0) {
+          this.vel[1] = (-this.vel[1]);
+        }
+      }
+      if (this.size === 2){
+        if (this.posX < 0 && this.velX < 0) {
+          this.velX = (-this.velX);
+        }
+        if (this.posX + 70 > 1400 && this.velX > 0) {
+          this.velX = (-this.velX);
+        }
+        if (this.posY - 5 < 0 && this.vel[1] < 0) {
+          this.vel[1] = (-this.vel[1]);
+        }
+        if (this.posY + 80 > 900 && this.vel[1] > 0) {
+          this.vel[1] = (-this.vel[1]);
+        }
+      }
+      if (this.size === 3) {
+        if (this.posX < 0 && this.velX < 0) {
+          this.velX = (-this.velX);
+        }
+        if (this.posX + 90 > 1400 && this.velX > 0) {
+          this.velX = (-this.velX);
+        }
+        if (this.posY - 5 < 0 && this.vel[1] < 0) {
+          this.vel[1] = (-this.vel[1]);
+        }
+        if (this.posY + 110 > 900 && this.vel[1] > 0) {
+          this.vel[1] = (-this.vel[1]);
+        }
+      }
+    }else{
+      if (this.posY > 0 && this.posY <= 15){
+        this.posY ++;
+      }else{
+        this.posY --;
+        console.log(this.posY)
       }
     }
-    if (this.size === 2){
-      if (this.posX < 0 && this.velX < 0) {
-        this.velX = (-this.velX);
-      }
-      if (this.posX + 70 > 1400 && this.velX > 0) {
-        this.velX = (-this.velX);
-      }
-      if (this.posY - 5 < 0 && this.vel[1] < 0) {
-        this.vel[1] = (-this.vel[1]);
-      }
-      if (this.posY + 80 > 900 && this.vel[1] > 0) {
-        this.vel[1] = (-this.vel[1]);
-      }
-    }
-    if (this.size === 3) {
-      if (this.posX < 0 && this.velX < 0) {
-        this.velX = (-this.velX);
-      }
-      if (this.posX + 90 > 1400 && this.velX > 0) {
-        this.velX = (-this.velX);
-      }
-      if (this.posY - 5 < 0 && this.vel[1] < 0) {
-        this.vel[1] = (-this.vel[1]);
-      }
-      if (this.posY + 110 > 900 && this.vel[1] > 0) {
-        this.vel[1] = (-this.vel[1]);
-      }
-    }
+  
   };
   
 }
