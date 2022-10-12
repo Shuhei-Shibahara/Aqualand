@@ -14,37 +14,40 @@
 </head>
 
 <body>
-
   <div class="titleScreen">
     <section>
-
+      
       <h1 class="start">Start</h1>
       <h2 class="instruction">Instructions</h2>
-
+      
     </section>
   </div>
-    <div class="burger">
-      <img id="burgertime" src="src/image/menubar.png" alt="">
-    </div>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+
+  </div>
   <nav class = "navbar">
     <ul>
-        <li >
-          <img class="feed" src="src/image/fishfood.png" alt="">
-        </li>
+      <li >
+        <img class="feed" src="src/image/fishfood.png" alt="">
+      </li>
     </ul>
     <ul>
-        <li >
-          <img class="fish" src="src/image/navFish.png" alt="">
-            <nav class="fishnavbar">
-              <img class="nemo" src="src/image/l-clownFish.png" alt="">
-              <img class="betta" src="src/image/l-betta.png" alt="">
-            </nav>
-        </li>
+      <li >
+        <img class="fish" src="src/image/navFish.png" alt="">
+        <nav class="fishnavbar">
+          <img class="nemo" src="src/image/l-clownFish.png" alt="">
+          <img class="betta" src="src/image/l-betta.png" alt="">
+        </nav>
+      </li>
     </ul>
     <ul>
-        <li >
-          <img class="decorate" src="src/image/house.png" alt="">
-        </li>
+      <li >
+        <img class="decorate" src="src/image/house.png" alt="">
+      </li>
     </ul>
     <ul>
       <li>
@@ -52,15 +55,26 @@
       </li>
     </ul>
     <ul>
-        <li class="exit">
-          <img class="imgexit" src="src/image/exit.png" alt="">
-        </li>
+      <li class="exit">
+        <img class="imgexit" src="src/image/exit.png" alt="">
+      </li>
     </ul>
   </nav>
-  <canvas id="canvas" >
-    
+  <div class="canvascontainer">
+    <div class="burgercontainer">
+  
+      <div class="burger">
+        <img id="burgertime" src="src/image/menubar.png" alt="">
+      </div>
+      
+    </div>
+    <canvas id="canvas" >
+      
+    </canvas>
 
-  </canvas>
+  </div>
+  
+  
   
 </body>
 </html>

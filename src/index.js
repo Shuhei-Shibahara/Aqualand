@@ -14,11 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const titleScreen = document.querySelector('.titleScreen')
   burger.addEventListener('mouseover', function () {
     nav.style.display = 'flex';
+    burger.style.display = 'none';
   })
+
+  // canvas.addEventListener('contextmenu', (ev) => {
+  //   ev.preventDefault();
+  //   nav.style.display = 'none'  
+  // });
+  window.addEventListener('keypress', (e) => {
+    if(e.key === 'e'){
+      nav.style.display = 'none'
+      burger.style.display = 'flex';
+    }
+  });
 
 
   start.addEventListener('click', function(){
     titleScreen.style.display = 'none'
+    nav.style.display ='flex'
 
   })
   // nav.addEventListener('mouseout', function(){
@@ -26,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // })
   exit.addEventListener('click', function () {
     nav.style.display = 'none';
+    burger.style.display = 'flex';
   })
   const gameview = new GameView(ctx)
   gameview.start();

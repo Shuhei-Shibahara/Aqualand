@@ -242,6 +242,7 @@ class Game{
                 }
                 el.hunger = false;
                 el.health = 60;
+                el.resetHunger();
                 el.vel = Util.randomVec(5);
                 el.velX = el.vel[0]
                 this.food.shift();

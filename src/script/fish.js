@@ -10,24 +10,25 @@ class Fish {
     this.radius = 10;
     this.name = name
     this.hunger = true;
-    this.health = 10;
+    this.health = 60;
     this.size = 1;
     this.status = 'alive'
-    this.resetHunger();
     this.healthClock();
   }
   
   resetHunger(){
     if (!this.hunger){
       setInterval(() => {
-      }, 30000)
         this.hunger = true;
+      }, 30000)
     }
   }
 
   healthClock(){
     if (this.hunger === true){
       setInterval(() => {
+        console.log(this.hunger)
+        console.log(this.health)
         this.health--;
       }, 1000)
     }
