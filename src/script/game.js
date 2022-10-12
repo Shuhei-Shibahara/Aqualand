@@ -34,13 +34,13 @@ class Game{
     if (click.classList.value === 'feed') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
-      // this.canvas.addEventListener('click', this.createFood)
-      this.canvas.addEventListener('click', this.destroy)
-      this.body.style.cursor = 'pointer'
-
+      this.canvas.removeEventListener('click', this.destroy)
+      this.canvas.addEventListener('click', this.createFood)
+      this.body.style.cursor = "url('../src/image/c-fishFood.png'), auto"
+      
     } 
     if (click.classList.value === 'fish'){
-      // this.canvas.removeEventListener('click', this.createFood)
+      this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.destroy)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.body.style.cursor = "url('../src/image/c-clownFish.png'), auto"
@@ -49,12 +49,23 @@ class Game{
     if (click.classList.value === 'decorate'){
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.createFish)
-      this.body.style.cursor = 'pointer'
+      this.canvas.removeEventListener('click', this.destroy)
+      this.body.style.cursor = "url('../src/image/c-decoration.png'), auto"
       this.canvas.addEventListener('click', this.createDecoration)
+    }
+    if (click.classList.value === 'delete') {
+      this.canvas.removeEventListener('click', this.createFood)
+      this.canvas.removeEventListener('click', this.createFish)
+      this.canvas.removeEventListener('click', this.createDecoration)
+      this.canvas.addEventListener('click', this.destroy)
+      this.body.style.cursor = "url('../src/image/c-delete.png'), auto"
+
     }
     if (click.classList.value === 'imgexit') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
+      this.canvas.removeEventListener('click', this.destroy)
+      this.canvas.removeEventListener('click', this.createFood)
       this.body.style.cursor = 'pointer'
 
     }
@@ -80,8 +91,8 @@ class Game{
 
   
   createFood(e){
-    let foodX = e.clientX - 290;
-    let foodY = e.clientY - 90;
+    let foodX = e.clientX - 200;
+    let foodY = e.clientY - 20;
     let pos = [foodX, foodY];
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){

@@ -111,6 +111,10 @@ img.imgexit:hover {
   background-color: yellow;
 }
 
+img.delete:hover {
+  background-color: yellow;
+}
+
 .nemo:hover {
   background-color: grey;
 }
