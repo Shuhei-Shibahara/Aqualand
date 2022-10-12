@@ -18,8 +18,10 @@ class GameView {
     }, 50);
     setInterval(() => {
       this.game.createBubble();
+    }, 10000);
+    setInterval(()=>{
       this.game.deleteBubble();
-    }, 8000);
+    }, 10000)
     setInterval(()=>{
       this.game.decreaseFoodLife()
     }, 800);

@@ -19,7 +19,7 @@ class Fish {
   resetHunger(){
       setInterval(() => {
         this.hunger = true;
-      }, 4000)
+      }, 30000)
   }
 
   draw(ctx) {
@@ -32,22 +32,22 @@ class Fish {
     nemo2.src = 'src/image/r-clownFish.png'
 
     if (this.velX > 0 && this.size === 1){
-      ctx.drawImage(nemo2, this.posX, this.posY, 20, 30)
+      ctx.drawImage(nemo2, this.posX, this.posY, 40, 60)
     }
     if (this.velX < 0 && this.size === 1){
-      ctx.drawImage(nemo, this.posX, this.posY, 20, 30)
+      ctx.drawImage(nemo, this.posX, this.posY, 40, 60)
     }
     if (this.velX > 0 && this.size === 2) {
-      ctx.drawImage(nemo2, this.posX, this.posY, 30, 50)
+      ctx.drawImage(nemo2, this.posX, this.posY, 60, 80)
     }
     if (this.velX < 0 && this.size === 2) {
-      ctx.drawImage(nemo, this.posX, this.posY, 30, 50)
+      ctx.drawImage(nemo, this.posX, this.posY, 60, 80)
     }
     if (this.velX > 0 && this.size === 3) {
-      ctx.drawImage(nemo2, this.posX, this.posY, 20, 30)
+      ctx.drawImage(nemo2, this.posX, this.posY, 100, 120)
     }
     if (this.velX < 0 && this.size === 3) {
-      ctx.drawImage(nemo, this.posX, this.posY, 20, 30)
+      ctx.drawImage(nemo, this.posX, this.posY, 100, 120)
     }
   };
 
@@ -72,17 +72,47 @@ class Fish {
     
     this.posX += this.velX;
     this.posY += this.vel[1];
-    if (this.posX - 5 < 0 && this.velX < 0 ){
-      this.velX = (-this.velX);
-    } 
-    if (this.posX + 20 > 880 && this.velX > 0) {
-      this.velX = (-this.velX);
-    } 
-    if (this.posY - 20 < 0 && this.vel[1] < 0) {
-      this.vel[1] = (-this.vel[1]);
-    } 
-    if (this.posY + 20 > 500 && this.vel[1] > 0) {
-      this.vel[1] = (-this.vel[1]);
+    if (this.size === 1){
+      if (this.posX - 5 < 0 && this.velX < 0 ){
+        this.velX = (-this.velX);
+      } 
+      if (this.posX + 40 > 1400 && this.velX > 0) {
+        this.velX = (-this.velX);
+      } 
+      if (this.posY < 0 && this.vel[1] < 0) {
+        this.vel[1] = (-this.vel[1]);
+      } 
+      if (this.posY + 70 > 900 && this.vel[1] > 0) {
+        this.vel[1] = (-this.vel[1]);
+      }
+    }
+    if (this.size === 2){
+      if (this.posX < 0 && this.velX < 0) {
+        this.velX = (-this.velX);
+      }
+      if (this.posX + 70 > 1400 && this.velX > 0) {
+        this.velX = (-this.velX);
+      }
+      if (this.posY - 5 < 0 && this.vel[1] < 0) {
+        this.vel[1] = (-this.vel[1]);
+      }
+      if (this.posY + 80 > 900 && this.vel[1] > 0) {
+        this.vel[1] = (-this.vel[1]);
+      }
+    }
+    if (this.size === 3) {
+      if (this.posX < 0 && this.velX < 0) {
+        this.velX = (-this.velX);
+      }
+      if (this.posX + 90 > 1400 && this.velX > 0) {
+        this.velX = (-this.velX);
+      }
+      if (this.posY - 5 < 0 && this.vel[1] < 0) {
+        this.vel[1] = (-this.vel[1]);
+      }
+      if (this.posY + 110 > 900 && this.vel[1] > 0) {
+        this.vel[1] = (-this.vel[1]);
+      }
     }
   };
   

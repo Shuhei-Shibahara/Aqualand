@@ -21,8 +21,8 @@ class Game{
     this.navbar.addEventListener('click', this.directingNavbar)
   }
 
-  static DIM_X = 880;
-  static DIM_Y = 500;
+  static DIM_X = 1400;
+  static DIM_Y = 900;
   static MAX_FISH = 10;
   static MAX_DEC = 4;
   static NUM_BUBBLES = 4;
@@ -34,6 +34,8 @@ class Game{
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.addEventListener('click', this.createFood)
+      this.body.style.cursor = 'pointer'
+
     } 
     if (click.classList.value === 'fish'){
       this.canvas.removeEventListener('click', this.createFood)
@@ -50,16 +52,18 @@ class Game{
     if (click.classList.value === 'imgexit') {
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
+      this.body.style.cursor = 'pointer'
+
     }
 
   }
 
   
   createFood(e){
-    let foodX = e.clientX ;
-    let foodY = e.clientY - 80;
-    let pos = [foodX, foodY];
     console.log(e.clientX)
+    let foodX = e.clientX - 290;
+    let foodY = e.clientY - 90;
+    let pos = [foodX, foodY];
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){
       this.food.push(food);
@@ -98,15 +102,35 @@ class Game{
     let decX = e.clientX;
     let decY = e.clientY;
     let pos = [decX,decY];
+    let zone = 0;
+    if (decX < 450) {
+      decX = 80;
+      zone = 1;
+    }
+    if (decX >= 450 && decX < 750) {
+      decX = 450;
+      zone = 2;
+    }
+
+    if (decX >= 750 && decX < 1100) {
+      decX = 750;
+      zone = 3;
+    }
+
+    if (decX >= 1150) {
+      decX = 1150;
+      zone = 4;
+    }
+
     if (!this.isOutOfBounds(pos) && this.dec.length < Game.MAX_DEC) {
-      this.addDecoration(pos)
+      this.addDecoration(pos, zone)
     }
   }
 
 
   createFish (e) {
-      let fishX = e.clientX - 50;
-      let fishY = e.clientY - 40;
+      let fishX = e.clientX - 220;
+      let fishY = e.clientY - 100;
       let pos = [fishX,fishY];
       let fishName = `fish${Object.keys(this.fish).length}`
 
@@ -127,13 +151,22 @@ class Game{
     this.fish[`fish${Object.values(this.fish).length}`] = fish
   }
 
-  addDecoration(pos){
-    const dec = new Decoration(pos);
-    this.dec.push(dec);
+  addDecoration(pos, zone){
+    const dec = new Decoration(pos, zone);
+    const empty = true;
+    this.dec.forEach(checker => {
+      if (checker.zone === dec.zone){
+        empty = false;
+      }
+    })
+    if (empty){
+      this.dec.push(dec);
+    }
+    console.log(this.dec)
   }
 
   randomPosition() {
-    let x = Math.floor(Math.random() * (Game.DIM_X - 50));
+    let x = Math.floor(Math.random() * (Game.DIM_X));
     // let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
     let y = Game.DIM_Y;
     return [x, y]
@@ -175,7 +208,9 @@ class Game{
           if (el.hunger){
             el.chase(food.pos);
             if (el.posX >= (food.pos[0] -10) && el.posX <= (food.pos[0] + 10)){
-              el.size += 1;
+              if (el.size < 3){
+                el.size += 1;
+              }
               el.hunger = false;
               el.resetHunger();
               el.vel = Util.randomVec(5);
