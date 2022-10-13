@@ -56,6 +56,41 @@ body {
   width: 100%;
   cursor: pointer;
 }
+h1 {
+  font-size: 150px;
+    background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));
+  font-family: 'AQUARIUM', sans-serif;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1.start {
+  font-size: 100px;
+  background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));
+  font-family: 'AQUARIUM', sans-serif;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1.start:hover {
+    background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h2.instruction {
+  font-size: 72px;
+    background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));    font-family: 'AQUARIUM', sans-serif;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2.instruction:hover {
+  font-size: 72px;
+    background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2.instructioninside{
+  font-size: 60px;
+}
 .grid-container {
   display: none;
   position: absolute;
@@ -104,7 +139,23 @@ div.titleScreen{
   height: 700px;
   width: 1200px;
   z-index: 3;
+
+  opacity: 0;
+  
+  animation: fadeIn 4s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 section.startscreen{
   display: flex;
   flex-direction: column;
@@ -119,7 +170,14 @@ section.instructionMenu{
   width: 400px;
   border-radius: 5%;
   z-index: 1;
+  opacity: 0;
+  
+  animation: fadeIn 2s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
 }
+
+
 .instructioninside{
   text-align: center;
   font-family: 'AQUARIUM', sans-serif;
@@ -221,38 +279,32 @@ img.delete:hover{
 }
 
 
-section h1{
-    border-top: 3px yellow solid;
-    font-family: 'AQUARIUM', sans-serif;
-    font-size: 100px;
-}
-section h1:hover {
-  color: yellow
-}
+// section h1{
+//     border-top: 3px yellow solid;
+//     font-family: 'AQUARIUM', sans-serif;
+//     font-size: 100px;
+// }
+// section h1:hover {
+//   color: yellow
+// }
 
-section > h2{
-      border-top:3px yellow solid;;
-      border-bottom: 3px yellow solid;
-      padding: 2px;
-      font-family: 'AQUARIUM', sans-serif;
-      font-size: 70px;
-}
+// section > h2{
+//       border-top:3px yellow solid;;
+//       border-bottom: 3px yellow solid;
+//       padding: 2px;
+//       font-family: 'AQUARIUM', sans-serif;
+//       font-size: 70px;
+// }
 
-section > h2:hover{
-  color: yellow;
-}
+// section > h2:hover{
+//   color: yellow;
+// }
 ul {
   list-style: none;
 }
 
 
-h1 {
-  display: block;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px;
 
-}
 
 
 
