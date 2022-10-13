@@ -57,7 +57,7 @@ class Game{
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.destroy)
       this.grid.style.display = 'flex';
-      this.body.style.cursor = "url('../src/image/c-decoration.png'), auto"
+      this.body.style.cursor = "url('./src/image/c-decoration.png'), auto"
       document.addEventListener('click', this.createDecoration)
     }else{
       this.grid.style.display = 'none';
@@ -67,7 +67,7 @@ class Game{
       this.canvas.removeEventListener('click', this.createFish)
       this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.addEventListener('click', this.destroy)
-      this.body.style.cursor = "url('../src/image/c-delete.png'), auto"
+      this.body.style.cursor = "url('./src/image/c-delete.png'), auto"
 
     }
     if (click.classList.value === 'imgexit') {
