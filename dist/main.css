@@ -102,8 +102,13 @@ h2.instruction:hover {
   -webkit-text-fill-color: transparent;
 }
 
+.h2padding {
+  padding-left: 10px;
+}
+
 h2.instructioninside {
   font-size: 60px;
+  width: 380px;
 }
 
 .grid-container {
@@ -207,12 +212,15 @@ section.startscreen {
 section.instructionMenu {
   display: none;
   position: absolute;
-  background-color: aquamarine;
+  background: linear-gradient(45deg, rgb(53, 161, 249), rgb(255, 255, 255));
   height: 500px;
   width: 400px;
   border-radius: 5%;
   z-index: 1;
   opacity: 0;
+  border: 10px solid transparent;
+  padding: 15px;
+  border-image: repeating-linear-gradient(30deg, #4d9f0c, #9198e5, #4d9f0c 20px) 60;
   animation: fadeIn 2s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
