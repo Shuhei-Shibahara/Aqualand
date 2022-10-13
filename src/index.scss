@@ -105,11 +105,71 @@ div.titleScreen{
   width: 1200px;
   z-index: 3;
 }
-section{
+section.startscreen{
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+section.instructionMenu{
+  display: none;
+  position: absolute;
+  background-color: aquamarine;
+  height: 500px;
+  width: 400px;
+  border-radius: 5%;
+  z-index: 1;
+}
+.instructioninside{
+  text-align: center;
+  font-family: 'AQUARIUM', sans-serif;
+  font-size: 70px;
+  padding-top: 10px;
+  border-top: 10px yellow solid;
+  border-bottom: 10px yellow solid;
+  border-radius: 8%;
+}
+.manual{
+  display: flex;
+  height: 300px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.insideimage{
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+.insideimage:first-child{
+  padding-top: 60px;
+}
+
+.insideexit{
+  display: flex;
+  width: 400px;
+  height: 300px;
+  justify-content: center;
+}
+
+img.exitMenu{
+  position: absolute;
+  margin-top: 50px;
+}
+
+
+.insideimage > img{
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+
+p {
+    font-family: 'AQUARIUM', sans-serif;
+    font-size: 40px;
+    padding-left: 40px;
+}
+
 
 .chaser{
   display: none;
@@ -170,7 +230,7 @@ section h1:hover {
   color: yellow
 }
 
-section h2{
+section > h2{
       border-top:3px yellow solid;;
       border-bottom: 3px yellow solid;
       padding: 2px;
@@ -178,7 +238,7 @@ section h2{
       font-size: 70px;
 }
 
-section h2:hover{
+section > h2:hover{
   color: yellow;
 }
 ul {

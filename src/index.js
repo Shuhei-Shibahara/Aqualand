@@ -9,12 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.width = 1400;
   const burger = document.querySelector('.burger')
   const exit = document.querySelector('.exit')
+  const exitMenu = document.querySelector('.exitMenu')
   const nav = document.querySelector('.navbar')
   const start = document.querySelector('.start')
+  const startInstruction = document.querySelector('.instruction')
+  const instructionsSolo = document.querySelector('.instructionMenu')
   const titleScreen = document.querySelector('.titleScreen')
   burger.addEventListener('mouseover', function () {
     nav.style.display = 'flex';
     burger.style.display = 'none';
+  })
+  startInstruction.addEventListener('click', (e)=>{
+    instructionsSolo.style.display = 'block'
+    titleScreen.style.display = 'none'
   })
 
   window.addEventListener('keypress', (e) => {
@@ -23,6 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
       burger.style.display = 'flex';
     }
   });
+
+  exitMenu.addEventListener('click', (e)=>{
+    instructionsSolo.style.display = 'none'
+    titleScreen.style.display = 'flex'
+
+  })
 
 
   start.addEventListener('click', function(){
