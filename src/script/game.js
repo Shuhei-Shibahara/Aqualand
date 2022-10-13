@@ -26,6 +26,7 @@ class Game{
     this.directingNavbar = this.directingNavbar.bind(this);
     this.navbar = document.querySelector(".navbar")
     this.navbar.addEventListener('click', this.directingNavbar)
+    this.count = 0;
   }
 
   static DIM_X = 1400;
@@ -156,7 +157,6 @@ class Game{
 
     if (this.dec.length === Game.MAX_DEC){
       this.grid.style.display = 'none'
-      this.body.style.cursor = 'pointer'
     }
   }
 
@@ -165,22 +165,27 @@ class Game{
       let fishX = e.clientX - 300;
       let fishY = e.clientY - 30;
       let pos = [fishX,fishY];
-      let fishName = `fish${Object.keys(this.fish).length}`
+      // let fishName = `fish${Object.keys(this.fish).length}`
+      let fishName = `fish${this.count}`;
+      this.count++;
+      console.log(this.fish)
 
       if (Object.keys(this.fish).length === Game.MAX_FISH){
         this.body.style.cursor = 'pointer'
       }
   
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
-        this.addFish(pos);
+        this.addFish(pos, fishName);
       }
     }
   
  
-  addFish (pos) {
-    const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
+  addFish (pos, fishName) {
+    // const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
+    const fish = new Fish(pos, fishName)
+
     
-    this.fish[`fish${Object.values(this.fish).length}`] = fish
+    this.fish[fishName] = fish
   }
 
   addDecoration(zone){

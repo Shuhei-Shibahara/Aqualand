@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     instructionsSolo.style.display = 'block'
     titleScreen.style.display = 'none'
   })
+  
 
   window.addEventListener('keypress', (e) => {
     if(e.key === 'e'){
@@ -50,13 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   })
 
-
   start.addEventListener('click', function(){
     titleScreen.style.display = 'none'
     nav.style.display ='flex'
 
   })
-
   exit.addEventListener('click', function () {
     nav.style.display = 'none';
     burger.style.display = 'flex';
