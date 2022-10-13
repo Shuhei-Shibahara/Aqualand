@@ -152,7 +152,6 @@ div.titleScreen {
   z-index: 3;
   opacity: 0;
   animation: fadeIn 4s;
-  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
