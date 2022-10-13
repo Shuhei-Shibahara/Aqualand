@@ -24,7 +24,7 @@ class GameView {
     }, 10000)
     setInterval(()=>{
       this.game.decreaseFoodLife()
-    }, 800);
+    }, 1000);
   }
 }
 

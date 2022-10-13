@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  window.addEventListener('keypress', (e) => {
+    if (e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      nav.style.display = 'flex'
+      burger.style.display = 'none';
+    }
+  });
+
   exitMenu.addEventListener('click', (e)=>{
     instructionsSolo.style.display = 'none'
     titleScreen.style.display = 'flex'
