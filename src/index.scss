@@ -75,7 +75,7 @@ h1.start {
   -webkit-text-fill-color: transparent;
 }
 h1.start:hover {
-    background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));
+  background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -83,15 +83,17 @@ h2.instruction {
   font-size: 72px;
   animation: fadeIn 11s;
   animation-fill-mode: forwards;
-  background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));    font-family: 'AQUARIUM', sans-serif;
+  background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));    
+  font-family: 'AQUARIUM', sans-serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 h2.instruction:hover {
   font-size: 72px;
-    background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(rgb(53, 161, 249), rgb(201, 192, 192));    
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2.instructioninside{
@@ -133,7 +135,33 @@ h2.instructioninside{
   background-color: grey;
 
 }
+.imagelink{
+  display: flex;
+  justify-content: flex-start;
+}
+.forpaddinggit{
+  padding-top: 10px;
+  padding-right: 10px;
+}
 
+.forpaddinglink{
+  padding-top: 10px;
+}
+a img{
+  background: linear-gradient(0deg,rgb(231, 250, 16),rgb(236, 245, 209));
+  text-align: center;
+  opacity: 1;
+  animation: fadeIn 15s;
+  animation-fill-mode: forwards;
+  border-radius: 20%;
+}
+
+
+a img:hover {
+  background: linear-gradient(0deg,rgb(53, 161, 249), rgb(201, 192, 192));
+  opacity: 1;
+  border-radius: 20%;
+}
 
 div.titleScreen{
   display: flex;
