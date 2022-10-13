@@ -212,7 +212,8 @@ section.instructionMenu{
   border: 10px solid transparent;
   padding: 15px;
   // border-image: url("..src/image/navFish.png") 7 round;
-  border-image: repeating-linear-gradient(30deg, #4d9f0c, #9198e5, #4d9f0c 20px) 60;  animation: fadeIn 2s;
+  border-image: repeating-linear-gradient(30deg, #0c589f, #9198e5, #4d9f0c 20px) 60;  
+  animation: fadeIn 2s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
 }
@@ -223,8 +224,9 @@ section.instructionMenu{
   font-family: 'AQUARIUM', sans-serif;
   font-size: 70px;
   padding-top: 10px;
-  border-top: 10px yellow solid;
-  border-bottom: 10px yellow solid;
+  border-top: 10px yellow dotted;
+  border-bottom: 10px yellow dotted;
+  border-image: repeating-linear-gradient(30deg, #0c589f, #9198e5, #4d9f0c 20px) 60;
   border-radius: 8%;
 }
 .manual{
