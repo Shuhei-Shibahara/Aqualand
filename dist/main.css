@@ -62,6 +62,8 @@ body {
 h1 {
   font-size: 150px;
   background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));
+  animation: fadeIn 5s;
+  animation-fill-mode: forwards;
   font-family: "AQUARIUM", sans-serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -70,6 +72,8 @@ h1 {
 h1.start {
   font-size: 100px;
   background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));
+  animation: fadeIn 8s;
+  animation-fill-mode: forwards;
   font-family: "AQUARIUM", sans-serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -83,6 +87,8 @@ h1.start:hover {
 
 h2.instruction {
   font-size: 72px;
+  animation: fadeIn 11s;
+  animation-fill-mode: forwards;
   background: -webkit-linear-gradient(rgb(231, 250, 16), rgb(236, 245, 209));
   font-family: "AQUARIUM", sans-serif;
   -webkit-background-clip: text;
@@ -151,7 +157,7 @@ div.titleScreen {
   width: 1200px;
   z-index: 3;
   opacity: 0;
-  animation: fadeIn 4s;
+  animation: fadeIn 2s;
   animation-fill-mode: forwards;
 }
 

@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const exit = document.querySelector('.exit')
   const exitMenu = document.querySelector('.exitMenu')
   const nav = document.querySelector('.navbar')
+  const grid = document.querySelector('.grid-container')
   const start = document.querySelector('.start')
+  const body = document.querySelector('body')
   const startInstruction = document.querySelector('.instruction')
   const instructionsSolo = document.querySelector('.instructionMenu')
   const titleScreen = document.querySelector('.titleScreen')
@@ -28,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if(e.key === 'e'){
       nav.style.display = 'none'
       burger.style.display = 'flex';
+      grid.style.display = 'none'
+      body.style.cursor = 'pointer'
+
     }
   });
 

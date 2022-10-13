@@ -153,6 +153,11 @@ class Game{
     if (this.dec.length < Game.MAX_DEC) {
       this.addDecoration(zone)
     }
+
+    if (this.dec.length === Game.MAX_DEC){
+      this.grid.style.display = 'none'
+      this.body.style.cursor = 'pointer'
+    }
   }
 
 
@@ -162,6 +167,9 @@ class Game{
       let pos = [fishX,fishY];
       let fishName = `fish${Object.keys(this.fish).length}`
 
+      if (Object.keys(this.fish).length === Game.MAX_FISH){
+        this.body.style.cursor = 'pointer'
+      }
   
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
         this.addFish(pos);
