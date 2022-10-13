@@ -42,14 +42,14 @@ class Game{
       this.canvas.removeEventListener('click', this.createDecoration)
       this.canvas.removeEventListener('click', this.destroy)
       this.canvas.addEventListener('click', this.createFood)
-      this.body.style.cursor = "url('../src/image/c-fishFood.png'), auto"
+      this.body.style.cursor = "url('src/image/c-fishFood.png'), auto"
       
     } 
     if (click.classList.value === 'fish'){
       this.canvas.removeEventListener('click', this.createFood)
       this.canvas.removeEventListener('click', this.destroy)
       this.canvas.removeEventListener('click', this.createDecoration)
-      this.body.style.cursor = "url('../src/image/c-clownFish.png'), auto"
+      this.body.style.cursor = "url('./src/image/c-clownFish.png'), auto"
       this.canvas.addEventListener('click', this.createFish)
     } 
     if (click.classList.value === 'decorate'){
