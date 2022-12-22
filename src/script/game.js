@@ -136,7 +136,7 @@ class Game{
 
   createDecoration(e){
     if (this.navbar.style.display === 'flex'){
-      this.grid.style.marginLeft = '118px'
+      this.grid.style.marginLeft = '9.9vw'
     }
     let zone;
     if (e.target === this.item1){

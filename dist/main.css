@@ -124,8 +124,8 @@ h2.instructioninside {
   border: black 1px solid;
   background-color: white;
   opacity: 0.4;
-  width: 348px;
-  height: 900px;
+  width: 19.94vw;
+  height: 80vh;
 }
 
 .grid-item1 {
@@ -363,7 +363,7 @@ ul {
   height: 71vh;
   width: 3vw;
   margin-top: 3vh;
-  margin-left: 5.5vw;
+  margin-left: 5.4vw;
   flex-flow: column wrap;
   justify-content: space-evenly;
   align-items: center;
