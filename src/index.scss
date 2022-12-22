@@ -174,8 +174,8 @@ div.titleScreen{
   border-radius: 5%;  
   background-image: url("../src/image/lobbyBackground.jpg");
   padding-top: 30px;
-  height: 700px;
-  width: 1200px;
+  height: 80vh;
+  width: 80vw;
   z-index: 3;
 
   opacity: 0;
@@ -355,8 +355,8 @@ ul {
   background-image: linear-gradient(160deg, #04fafd 5%, #119dff 50%, #2e35eb);
   background-size: 400%;
   animation: bg-animation 10s infinite alternate;
-  max-width: 100%;
-  max-height: 100%;
+  width: 80vw;
+  height: 80vh;
 }
 
 .burger:hover #canvas{
@@ -378,7 +378,6 @@ ul {
 
 .navbar {
   display: none;
-  // position: absolute;
   padding: 10px;
   height: 815px;
   width: 80px;

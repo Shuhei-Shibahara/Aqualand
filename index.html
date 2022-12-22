@@ -11,108 +11,110 @@
 </head>
 
 <body>
-
-  <div class="titleScreen">
-    <section class="startscreen">
-      
-      <h1 class="Aqualand">Aqualand</h1>
-      <h1 class="start">Start</h1>
-      <h2 class="instruction">Instructions</h2>
-      <div class="imagelink">
-        <div class="forpaddinggit">
-          <a href="https://github.com/Shuhei-Shibahara/Aqualand" target="_blank">
-            <img class="github" src="src/image/github.png" height="50px" width="50px" alt="">
-          </a>
+  <div class="mainContainer">
+    <div class="titleScreen">
+      <section class="startscreen">
+        
+        <h1 class="Aqualand">Aqualand</h1>
+        <h1 class="start">Start</h1>
+        <h2 class="instruction">Instructions</h2>
+        <div class="imagelink">
+          <div class="forpaddinggit">
+            <a href="https://github.com/Shuhei-Shibahara/Aqualand" target="_blank">
+              <img class="github" src="src/image/github.png" height="50px" width="50px" alt="">
+            </a>
+          </div>
+          <div class="forpaddinglink">
+            <a href="https://www.linkedin.com/in/shuhei-shibahara/" target="_blank">
+              <img class="linkedin" src="src/image/linkedin.png" height="50px" width="50px" alt="">
+            </a>
+          </div>
+  
         </div>
-        <div class="forpaddinglink">
-          <a href="https://www.linkedin.com/in/shuhei-shibahara/" target="_blank">
-            <img class="linkedin" src="src/image/linkedin.png" height="50px" width="50px" alt="">
-          </a>
-        </div>
-
-      </div>
-      
-    </section>
-  </div>
-
-  <section class="instructionMenu">
-    <div class="info">
-      <div class="h2padding">
-        <h2 class="instructioninside">Instructions</h2>
-      </div>
-      <section class="manual">
-        <div class="insideimage">
-          <img class="i-fishfood" src="src/image/fishfood.png" width="40px" height="50px" alt="">
-          <p>Feed Your Fish</p>
-        </div>
-        <div class="insideimage">
-          <img class="i-fish" src="src/image/navFish.png" width="40px" height="50px" alt="">
-          <p>Create Your fish</p>
-        </div>
-        <div class="insideimage">
-          <img class="i-decorate" src="src/image/house.png" width="40px" height="50px" alt="">
-          <p>Decorate Your Aquarium</p>
-        </div>
-        <div class="insideimage">
-          <img class="i-decorate" src="src/image/n-delete.png" width="40px" height="50px" alt="">
-          <p>It's a Fish Funeral :(</p>
-        </div>
-        <div class="insideexit">
-          <img class="exitMenu" src="src/image/exit.png" width="20px" height="20px" alt="">
-        </div>
+        
       </section>
     </div>
-  </section>
-
-  <div class="grid-container">
-    <div class="grid-item1"></div>
-    <div class="grid-item2"></div>
-    <div class="grid-item3"></div>
-    <div class="grid-item4"></div>
+  
+    <section class="instructionMenu">
+      <div class="info">
+        <div class="h2padding">
+          <h2 class="instructioninside">Instructions</h2>
+        </div>
+        <section class="manual">
+          <div class="insideimage">
+            <img class="i-fishfood" src="src/image/fishfood.png" width="40px" height="50px" alt="">
+            <p>Feed Your Fish</p>
+          </div>
+          <div class="insideimage">
+            <img class="i-fish" src="src/image/navFish.png" width="40px" height="50px" alt="">
+            <p>Create Your fish</p>
+          </div>
+          <div class="insideimage">
+            <img class="i-decorate" src="src/image/house.png" width="40px" height="50px" alt="">
+            <p>Decorate Your Aquarium</p>
+          </div>
+          <div class="insideimage">
+            <img class="i-decorate" src="src/image/n-delete.png" width="40px" height="50px" alt="">
+            <p>It's a Fish Funeral :(</p>
+          </div>
+          <div class="insideexit">
+            <img class="exitMenu" src="src/image/exit.png" width="20px" height="20px" alt="">
+          </div>
+        </section>
+      </div>
+    </section>
+  
+    <div class="grid-container">
+      <div class="grid-item1"></div>
+      <div class="grid-item2"></div>
+      <div class="grid-item3"></div>
+      <div class="grid-item4"></div>
+  
+    </div>
+    <nav class = "navbar">
+      <ul>
+        <li >
+          <img class="feed" src="src/image/fishfood.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li >
+          <img class="fish" src="src/image/navFish.png" alt="">
+          <nav class="fishnavbar">
+            <img class="nemo" src="src/image/l-clownFish.png" alt="">
+            <img class="betta" src="src/image/l-betta.png" alt="">
+          </nav>
+        </li>
+      </ul>
+      <ul>
+        <li >
+          <img class="decorate" src="src/image/house.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img class="delete" src="src/image/n-delete.png" alt="">
+        </li>
+      </ul>
+      <ul>
+        <li class="exit">
+          <img class="imgexit" src="src/image/exit.png" alt="">
+        </li>
+      </ul>
+    </nav>
+    <div class="canvascontainer">
+      <div class="burgercontainer">
+    
+        <div class="burger">
+          <img id="burgertime" src="src/image/menubar.png" alt="">
+        </div>
+        
+      </div>
+      <canvas id="canvas" >
+        
+      </canvas>
 
   </div>
-  <nav class = "navbar">
-    <ul>
-      <li >
-        <img class="feed" src="src/image/fishfood.png" alt="">
-      </li>
-    </ul>
-    <ul>
-      <li >
-        <img class="fish" src="src/image/navFish.png" alt="">
-        <nav class="fishnavbar">
-          <img class="nemo" src="src/image/l-clownFish.png" alt="">
-          <img class="betta" src="src/image/l-betta.png" alt="">
-        </nav>
-      </li>
-    </ul>
-    <ul>
-      <li >
-        <img class="decorate" src="src/image/house.png" alt="">
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <img class="delete" src="src/image/n-delete.png" alt="">
-      </li>
-    </ul>
-    <ul>
-      <li class="exit">
-        <img class="imgexit" src="src/image/exit.png" alt="">
-      </li>
-    </ul>
-  </nav>
-  <div class="canvascontainer">
-    <div class="burgercontainer">
-  
-      <div class="burger">
-        <img id="burgertime" src="src/image/menubar.png" alt="">
-      </div>
-      
-    </div>
-    <canvas id="canvas" >
-      
-    </canvas>
 
   </div>
   

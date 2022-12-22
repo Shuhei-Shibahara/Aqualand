@@ -181,7 +181,6 @@ class Game{
   
  
   addFish (pos, fishName) {
-    // const fish = new Fish(pos, `fish${Object.values(this.fish).length}`)
     const fish = new Fish(pos, fishName)
 
     

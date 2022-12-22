@@ -5,8 +5,7 @@ import {GameView} from "./script/gameView.js";
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext("2d"); 
-  canvas.height = 900;
-  canvas.width = 1400;
+  
   const burger = document.querySelector('.burger')
   const exit = document.querySelector('.exit')
   const exitMenu = document.querySelector('.exitMenu')
