@@ -29,8 +29,9 @@ class Game{
     this.count = 0;
   }
 
-  static DIM_X = 1400;
-  static DIM_Y = 900;
+
+  // static DIM_X = this.canvas.width;
+  // static DIM_Y = this.canvas.getBoundingClientRect().height;
   static MAX_FISH = 10;
   static MAX_DEC = 4;
   static NUM_BUBBLES = 4;
@@ -97,6 +98,8 @@ class Game{
 
   
   createFood(e){
+    console.log(this.canvas.getBoundingClientRect().width)
+    console.log(e.clientX)
     let foodX = e.clientX - 300;
     let foodY = e.clientY - 40;
     let pos = [foodX, foodY];

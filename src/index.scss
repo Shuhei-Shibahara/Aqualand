@@ -178,14 +178,11 @@ div.titleScreen{
   display: flex;
   // position: absolute;
   justify-content: center;
-  grid-column-start: 1;
   margin-left: 10vw;
   border-radius: 5%;  
   background-image: url("../src/image/lobbyBackground.jpg");
   height: 80vh;
   width: 80vw;
-  z-index: 3;
-
   opacity: 0;
   animation: fadeIn 2s;
   // animation-delay: 1s;

@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   start.addEventListener('click', function(){
     titleScreen.style.display = 'none'
+    console.log('hello')
     nav.style.display ='flex'
 
   })
