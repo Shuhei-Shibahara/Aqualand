@@ -98,7 +98,7 @@ class Game{
 
   
   createFood(e){
-    console.log(this.canvas.getBoundingClientRect().width)
+    // console.log(this.canvas.getBoundingClientRect().width)
     console.log(e.clientX)
     let foodX = e.clientX - 300;
     let foodY = e.clientY - 40;
@@ -165,14 +165,14 @@ class Game{
 
 
   createFish (e) {
-      let fishX = e.clientX - 300;
-      let fishY = e.clientY - 30;
+ 
+      let fishX = (this.canvas.getBoundingClientRect().width * .1) + e.clientX;
+      let fishY = (this.canvas.getBoundingClientRect().height * .1) + e.clientY;
+      console.log(e.clientX)
+      console.log(fishX, fishY)
       let pos = [fishX,fishY];
-      // let fishName = `fish${Object.keys(this.fish).length}`
       let fishName = `fish${this.count}`;
       this.count++;
-      console.log(this.fish)
-
       if (Object.keys(this.fish).length === Game.MAX_FISH){
         this.body.style.cursor = 'pointer'
       }
@@ -206,15 +206,15 @@ class Game{
     }
 
   randomPosition() {
-    let x = Math.floor(Math.random() * (Game.DIM_X));
+    let x = Math.floor(Math.random() * (this.canvas.getBoundingClientRect().width));
     // let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
-    let y = Game.DIM_Y;
+    let y = this.canvas.getBoundingClientRect().height;
     return [x, y]
   }
   
 
   draw (ctx) {
-    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+    ctx.clearRect(0, 0, this.canvas.getBoundingClientRect().width, this.canvas.getBoundingClientRect().height);
     this.dec.forEach(el2=>{
       el2.draw(ctx)
     })
@@ -277,7 +277,7 @@ class Game{
 
   isOutOfBounds(pos) {
     return (pos[0] < 0) || (pos[1] < 0) ||
-      (pos[0] > Game.DIM_X) || (pos[1] > Game.DIM_Y);
+      (pos[0] > this.canvas.getBoundingClientRect().width) || (pos[1] > this.canvas.getBoundingClientRect().height);
   };
 
 }
