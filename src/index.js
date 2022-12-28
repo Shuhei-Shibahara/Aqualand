@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     nav.style.display = 'none';
     burger.style.display = 'flex';
   })
+
+  canvas.height = window.innerHeight * .8;
+  canvas.width = window.innerWidth * .8;
   const gameview = new GameView(ctx)
   gameview.start();
 });

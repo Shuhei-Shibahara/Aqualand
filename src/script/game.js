@@ -168,8 +168,10 @@ class Game{
  
       let fishX = (this.canvas.getBoundingClientRect().width * .1) + e.clientX;
       let fishY = (this.canvas.getBoundingClientRect().height * .1) + e.clientY;
-      console.log(e.clientX)
-      console.log(fishX, fishY)
+      // console.log(this.canvas.getBoundingClientRect().width, 'width')
+      console.log(this.canvas.width, 'width')
+      console.log(this.canvas.height,'height')
+      // console.log(fishX, fishY)
       let pos = [fishX,fishY];
       let fishName = `fish${this.count}`;
       this.count++;
@@ -214,7 +216,8 @@ class Game{
   
 
   draw (ctx) {
-    ctx.clearRect(0, 0, this.canvas.getBoundingClientRect().width, this.canvas.getBoundingClientRect().height);
+    // ctx.clearRect(0, 0, 1500, 800);
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.dec.forEach(el2=>{
       el2.draw(ctx)
     })
