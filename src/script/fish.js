@@ -45,7 +45,7 @@ class Fish {
 
   if (this.health > 0){
     if (this.velX > 0 && this.size === 1){
-      ctx.drawImage(nemo2, this.posX, this.posY, 20, 10)
+      ctx.drawImage(nemo2, this.posX, this.posY, 60, 40)
     }
     if (this.velX < 0 && this.size === 1){
       ctx.drawImage(nemo, this.posX, this.posY, 60, 40)
@@ -65,7 +65,7 @@ class Fish {
   }
   if (this.health <= 0) {
     this.status = 'dead'
-    ctx.drawImage(deadFish, this.posX, this.posY, 10, 5)
+    ctx.drawImage(deadFish, this.posX, this.posY, 60, 40)
   }
     
  

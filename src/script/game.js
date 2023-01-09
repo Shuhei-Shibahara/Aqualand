@@ -166,12 +166,13 @@ class Game{
 
   createFish (e) {
  
-      let fishX = (this.canvas.getBoundingClientRect().width * .1) + e.clientX;
-      let fishY = (this.canvas.getBoundingClientRect().height * .1) + e.clientY;
+      // let fishX = (this.canvas.getBoundingClientRect().width * .1) + e.clientX;
+      // let fishY = (this.canvas.getBoundingClientRect().height * .1) + e.clientY;
+      let fishX = e.clientX - (this.canvas.width * .1);
+      let fishY = e.clientY - (this.canvas.height * .1);
       // console.log(this.canvas.getBoundingClientRect().width, 'width')
       console.log(this.canvas.width, 'width')
       console.log(this.canvas.height,'height')
-      // console.log(fishX, fishY)
       let pos = [fishX,fishY];
       let fishName = `fish${this.count}`;
       this.count++;
