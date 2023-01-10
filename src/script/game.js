@@ -83,8 +83,8 @@ class Game{
   }
 
   destroy(e){
-    let targetX = e.clientX - 200;
-    let targetY = e.clientY;
+    let targetX = e.clientX - (this.canvas.width * .12);
+    let targetY = e.clientY - (this.canvas.height * .12);
     let pos = [targetX, targetY]
     Object.values(this.fish).forEach((el) => {
       if (el.status === 'dead')
