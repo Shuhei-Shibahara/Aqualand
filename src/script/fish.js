@@ -1,10 +1,12 @@
 import {Util} from "./util.js"
 
 class Fish {
-  constructor (pos,name){
+  constructor (pos,name, dim){
     this.pos = pos;
     this.posX = pos[0];
     this.posY = pos[1];
+    this.dimX = dim[0];
+    this.dimY = dim[1]
     this.vel = Util.randomVec(5);
     this.velX = this.vel[0];
     this.radius = 10;
@@ -96,13 +98,13 @@ class Fish {
         if (this.posX - 5 < 0 && this.velX < 0 ){
           this.velX = (-this.velX);
         } 
-        if (this.posX + 40 > 1400 && this.velX > 0) {
+        if (this.posX + 60 > this.dimX && this.velX > 0) {
           this.velX = (-this.velX);
         } 
         if (this.posY < 0 && this.vel[1] < 0) {
           this.vel[1] = (-this.vel[1]);
         } 
-        if (this.posY + 70 > 900 && this.vel[1] > 0) {
+        if (this.posY + 70 > this.dimY && this.vel[1] > 0) {
           this.vel[1] = (-this.vel[1]);
         }
       }
@@ -110,13 +112,13 @@ class Fish {
         if (this.posX < 0 && this.velX < 0) {
           this.velX = (-this.velX);
         }
-        if (this.posX + 70 > 1400 && this.velX > 0) {
+        if (this.posX + 70 > this.dimX && this.velX > 0) {
           this.velX = (-this.velX);
         }
         if (this.posY - 5 < 0 && this.vel[1] < 0) {
           this.vel[1] = (-this.vel[1]);
         }
-        if (this.posY + 80 > 900 && this.vel[1] > 0) {
+        if (this.posY + 80 > this.dimY && this.vel[1] > 0) {
           this.vel[1] = (-this.vel[1]);
         }
       }
@@ -124,13 +126,13 @@ class Fish {
         if (this.posX < 0 && this.velX < 0) {
           this.velX = (-this.velX);
         }
-        if (this.posX + 90 > 1400 && this.velX > 0) {
+        if (this.posX + 90 > this.dimX && this.velX > 0) {
           this.velX = (-this.velX);
         }
         if (this.posY - 5 < 0 && this.vel[1] < 0) {
           this.vel[1] = (-this.vel[1]);
         }
-        if (this.posY + 110 > 900 && this.vel[1] > 0) {
+        if (this.posY + 110 > this.dimY && this.vel[1] > 0) {
           this.vel[1] = (-this.vel[1]);
         }
       }

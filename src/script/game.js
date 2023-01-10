@@ -100,8 +100,10 @@ class Game{
   createFood(e){
     // console.log(this.canvas.getBoundingClientRect().width)
     console.log(e.clientX)
-    let foodX = e.clientX - 300;
-    let foodY = e.clientY - 40;
+    // let foodX = e.clientX - 300;
+    // let foodY = e.clientY - 40;
+    let foodX = e.clientX - (this.canvas.width * .12)
+    let foodY = e.clientY - (this.canvas.height * .12)
     let pos = [foodX, foodY];
     const food = new Food(pos);
     if (this.food.length < Game.MAX_FOOD){
@@ -166,14 +168,12 @@ class Game{
 
   createFish (e) {
  
-      // let fishX = (this.canvas.getBoundingClientRect().width * .1) + e.clientX;
-      // let fishY = (this.canvas.getBoundingClientRect().height * .1) + e.clientY;
       let fishX = e.clientX - (this.canvas.width * .1);
       let fishY = e.clientY - (this.canvas.height * .1);
-      // console.log(this.canvas.getBoundingClientRect().width, 'width')
       console.log(this.canvas.width, 'width')
       console.log(this.canvas.height,'height')
       let pos = [fishX,fishY];
+      let dim = [this.canvas.width, this.canvas.height]
       let fishName = `fish${this.count}`;
       this.count++;
       if (Object.keys(this.fish).length === Game.MAX_FISH){
@@ -181,13 +181,13 @@ class Game{
       }
   
       if (!this.isOutOfBounds(pos) && Object.keys(this.fish).length < Game.MAX_FISH){
-        this.addFish(pos, fishName);
+        this.addFish(pos, fishName, dim);
       }
     }
   
  
-  addFish (pos, fishName) {
-    const fish = new Fish(pos, fishName)
+  addFish (pos, fishName, dim) {
+    const fish = new Fish(pos, fishName, dim)
 
     
     this.fish[fishName] = fish
@@ -210,14 +210,12 @@ class Game{
 
   randomPosition() {
     let x = Math.floor(Math.random() * (this.canvas.getBoundingClientRect().width));
-    // let y = Math.floor(Math.random() * (Game.DIM_Y + 1));
     let y = this.canvas.getBoundingClientRect().height;
     return [x, y]
   }
   
 
   draw (ctx) {
-    // ctx.clearRect(0, 0, 1500, 800);
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.dec.forEach(el2=>{
       el2.draw(ctx)
