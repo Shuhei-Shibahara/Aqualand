@@ -96,7 +96,6 @@ class Game{
 
   
   createFood(e){
-    console.log(e.clientX)
     let foodX = e.clientX - (this.canvas.width * .12)
     let foodY = e.clientY - (this.canvas.height * .12)
     let pos = [foodX, foodY];
@@ -165,8 +164,6 @@ class Game{
  
       let fishX = e.clientX - (this.canvas.width * .1);
       let fishY = e.clientY - (this.canvas.height * .1);
-      console.log(this.canvas.width, 'width')
-      console.log(this.canvas.height,'height')
       let pos = [fishX,fishY];
       let dim = [this.canvas.width, this.canvas.height]
       let fishName = `fish${this.count}`;

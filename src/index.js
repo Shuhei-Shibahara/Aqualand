@@ -5,7 +5,6 @@ import {GameView} from "./script/gameView.js";
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext("2d"); 
-  
   const burger = document.querySelector('.burger')
   const exit = document.querySelector('.exit')
   const exitMenu = document.querySelector('.exitMenu')
@@ -52,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   start.addEventListener('click', function(){
     titleScreen.style.display = 'none'
-    console.log('hello')
     nav.style.display ='flex'
 
   })
