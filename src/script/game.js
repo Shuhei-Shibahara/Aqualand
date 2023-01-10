@@ -30,8 +30,7 @@ class Game{
   }
 
 
-  // static DIM_X = this.canvas.width;
-  // static DIM_Y = this.canvas.getBoundingClientRect().height;
+ 
   static MAX_FISH = 10;
   static MAX_DEC = 4;
   static NUM_BUBBLES = 4;
@@ -86,7 +85,6 @@ class Game{
   destroy(e){
     let targetX = e.clientX - 200;
     let targetY = e.clientY;
-    console.log(targetX, targetY)
     let pos = [targetX, targetY]
     Object.values(this.fish).forEach((el) => {
       if (el.status === 'dead')
@@ -98,10 +96,7 @@ class Game{
 
   
   createFood(e){
-    // console.log(this.canvas.getBoundingClientRect().width)
     console.log(e.clientX)
-    // let foodX = e.clientX - 300;
-    // let foodY = e.clientY - 40;
     let foodX = e.clientX - (this.canvas.width * .12)
     let foodY = e.clientY - (this.canvas.height * .12)
     let pos = [foodX, foodY];
@@ -188,14 +183,13 @@ class Game{
  
   addFish (pos, fishName, dim) {
     const fish = new Fish(pos, fishName, dim)
-
-    
     this.fish[fishName] = fish
   }
 
   addDecoration(zone){
+    let dim = [this.canvas.width, this.canvas.height]
     if (zone){
-        const dec = new Decoration(zone);
+        const dec = new Decoration(zone, dim);
         const empty = true;
         this.dec.forEach(checker => {
           if (checker.zone === dec.zone){

@@ -1,26 +1,27 @@
 
 
 class Decoration{
-  constructor (zone){
+  constructor (zone, dim){
     this.posX = 0;
-    this.posY = 500;
+    this.dimX = dim[0]
+    this.posY = dim[1] * .487;
     this.zone = zone;
   }
 
   draw(ctx) {
     if (this.zone === 1) {
-      this.posX = 120;
+      this.posX = this.dimX * 0.1;
     }
     if (this.zone === 2){
-      this.posX = 450;
+      this.posX = this.dimX * 0.35;
     }
 
     if (this.zone === 3) {
-      this.posX = 800;
+      this.posX = this.dimX * 0.6;
     }
 
     if (this.zone === 4) {
-      this.posX = 1180;
+      this.posX = this.dimX * 0.85;
     }
 
     const dec = new Image();
