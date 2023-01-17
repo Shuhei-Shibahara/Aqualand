@@ -5,6 +5,7 @@ class Decoration{
     this.posX = 0;
     this.dimX = dim[0]
     this.posY = dim[1] * .487;
+    this.height = dim[1] * .52;
     this.zone = zone;
   }
 
@@ -26,7 +27,7 @@ class Decoration{
 
     const dec = new Image();
     dec.src = 'src/image/palmtree.png'
-    ctx.drawImage(dec, this.posX, this.posY, 120, 400)
+    ctx.drawImage(dec, this.posX, this.posY, 120, this.height)
   };
 
 }
