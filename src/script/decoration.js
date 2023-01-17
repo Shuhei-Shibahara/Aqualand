@@ -4,8 +4,8 @@ class Decoration{
   constructor (zone, dim){
     this.posX = 0;
     this.dimX = dim[0]
-    this.posY = dim[1] * .487;
-    this.height = dim[1] * .52;
+    this.posY = dim[1] * .5;
+    this.height = dim[1] * .5;
     this.zone = zone;
   }
 
